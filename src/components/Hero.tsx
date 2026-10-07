@@ -120,45 +120,37 @@ export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
           </div>
 
           {/* Center Institution & Chapter Titles */}
-          <div className="flex-1 text-center px-2 space-y-1">
+          <div className="flex-1 text-center px-2 space-y-0.5">
             <p
-              className={`text-[10px] sm:text-xs font-semibold tracking-wider ${
-                isDark ? 'text-amber-300' : 'text-amber-700'
+              className={`text-[10px] font-medium tracking-wider ${
+                isDark ? 'text-amber-300/90' : 'text-amber-700'
               }`}
             >
               {EVENT_CONFIG.societyName}
             </p>
             <p
-              className={`text-sm sm:text-xl md:text-2xl font-extrabold tracking-tight ${
+              className={`text-xs sm:text-base md:text-lg font-bold tracking-tight ${
                 isDark ? 'text-white' : 'text-slate-900'
               }`}
             >
               {EVENT_CONFIG.institution.toUpperCase()}
             </p>
             <p
-              className={`hidden md:block text-[11px] ${
+              className={`hidden md:block text-[10px] ${
                 isDark ? 'text-slate-400' : 'text-slate-500'
               }`}
             >
               {EVENT_CONFIG.institutionSubtitle}
             </p>
             <p
-              className={`text-xs sm:text-sm pt-0.5 ${
-                isDark ? 'text-slate-200' : 'text-slate-700'
+              className={`text-[11px] sm:text-xs pt-0.5 ${
+                isDark ? 'text-slate-300' : 'text-slate-700'
               }`}
             >
-              Organized by{' '}
-              <span className="font-bold text-sky-400">
+              <span className="font-semibold text-sky-400">
                 {EVENT_CONFIG.department}
               </span>{' '}
-              in association with{' '}
-              <span className="font-bold text-white">
-                PCE ACM Student Chapter
-              </span>{' '}
-              &amp;{' '}
-              <span className="font-bold text-white">
-                PCE ACM-W Student Chapter
-              </span>
+              · PCE ACM &amp; PCE ACM-W Student Chapters
             </p>
           </div>
 
@@ -178,31 +170,30 @@ export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
               <span>OFFLINE ON-SITE CHALLENGE</span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               <p
-                className={`font-display text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wider ${
+                className={`font-display text-base sm:text-xl font-bold tracking-wider ${
                   isDark ? 'text-amber-300' : 'text-amber-600'
                 }`}
               >
                 NATIONAL LEVEL
               </p>
               <h1
-                className={`font-display text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.03] ${
+                className={`font-display text-3xl sm:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.06] ${
                   isDark ? 'text-poster-gold' : 'text-slate-950'
                 }`}
-                style={{ textWrap: 'balance' }}
               >
                 AI-FUSION 2026
               </h1>
               <p
-                className={`font-display text-2xl sm:text-3xl font-bold tracking-wide pt-1 ${
+                className={`font-display text-xl sm:text-2xl font-semibold tracking-wide pt-0.5 ${
                   isDark ? 'text-white' : 'text-violet-900'
                 }`}
               >
                 BUILD WITH AI
               </p>
               <p
-                className={`text-lg sm:text-xl italic font-medium ${
+                className={`text-sm sm:text-base italic ${
                   isDark ? 'text-violet-200' : 'text-slate-700'
                 }`}
               >
@@ -211,16 +202,16 @@ export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
             </div>
 
             <p
-              className={`text-sm sm:text-base max-w-2xl mx-auto lg:mx-0 leading-relaxed ${
+              className={`text-xs sm:text-sm max-w-xl mx-auto lg:mx-0 leading-relaxed ${
                 isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              Join builders from all colleges and branches at{' '}
-              <span className={isDark ? 'text-white font-semibold' : 'text-slate-900 font-semibold'}>
-                Priyadarshini College of Engineering, Nagpur
-              </span>{' '}
-              for a high-intensity 6-hour webathon (4 hours of coding). Freely leverage modern AI tools to design, code, deploy, and pitch a live web application for a{' '}
-              <span className="text-amber-400 font-bold">₹10,000 Prize Pool</span>.
+              A 6-hour on-site webathon (4 hours coding) at{' '}
+              <span className={isDark ? 'text-white font-medium' : 'text-slate-900 font-medium'}>
+                PCE Nagpur
+              </span>
+              . Build, deploy, and pitch an AI-powered web app for a{' '}
+              <span className="text-amber-400 font-semibold">₹10,000 Prize Pool</span>.
             </p>
 
             {/* Primary CTA Buttons */}

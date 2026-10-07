@@ -289,104 +289,84 @@ export const TIMELINE_STEPS: TimelineStep[] = [
   {
     step: 'STEP 01',
     title: 'Registration',
-    subtitle: 'Online Team Enrollment (Deadline: 15 Oct 2026)',
-    description:
-      'Register individually or as a team of 1–3 members using the official registration form. Entry fee is ₹100 per member.',
+    subtitle: 'By 15 Oct 2026',
+    description: 'Register solo or as a 1–3 member team (₹100/member).',
     badge: 'Pre-Event',
   },
   {
     step: 'STEP 02',
-    title: 'Check-In & Orientation',
-    subtitle: 'Venue Reporting & Briefing',
-    description:
-      'Participants report to the Computer Laboratory, IT Building, CT Department, PCE Nagpur for ID verification, lab seating, and official rules orientation.',
-    badge: 'On-Site Morning',
+    title: 'Check-In & Briefing',
+    subtitle: '09:00 AM Reporting',
+    description: 'Report to Computer Lab, IT Building, PCE for ID check & rules.',
+    badge: 'Morning',
   },
   {
     step: 'STEP 03',
     title: 'Problem Statements',
-    subtitle: 'Displayed Live on Event Day',
-    description:
-      'Problem statements will be displayed on the event day! Four challenge tracks will be revealed on-site, and participants can choose ANY ONE problem statement to build.',
-    badge: 'On-Site Reveal',
+    subtitle: 'Live Event-Day Reveal',
+    description: '4 problem statements revealed on-site; pick ANY ONE.',
+    badge: 'Live Reveal',
   },
   {
     step: 'STEP 04',
     title: 'Understand & Plan',
-    subtitle: 'Architecture & Wireframing',
-    description:
-      'Analyze the problem, structure your core user journey, decide your tech stack, and plan your solution approach with your team.',
+    subtitle: 'Architecture & Flow',
+    description: 'Map user workflow, UI layout, and tech stack with your team.',
     badge: 'Strategy',
   },
   {
     step: 'STEP 05',
     title: 'BUILD WITH AI',
-    subtitle: '4 Hours Actual Coding & Development',
-    description:
-      'Participants get 4 hours of dedicated coding and development time. You may freely use AI development tools to accelerate building.',
-    highlights: [
-      'Google AI Studio',
-      'Gemini',
-      'ChatGPT',
-      'GitHub Copilot',
-      'Cursor',
-      'Other permitted AI development tools',
-    ],
-    badge: '4-Hour Sprint',
+    subtitle: '4 Hours Coding Sprint',
+    description: 'Build your web app freely using AI Studio, Gemini, ChatGPT, Copilot, or Cursor.',
+    badge: '4-Hr Sprint',
   },
   {
     step: 'STEP 06',
-    title: 'GitHub + Deployment',
-    subtitle: 'Source Code Push & Live Hosting',
-    description:
-      'Push the complete project to a GitHub repository, add the official ACM account as a collaborator, and deploy the working website/web application live.',
+    title: 'GitHub + Deploy',
+    subtitle: 'Repo & Live URL',
+    description: 'Push source code to GitHub, add ACM collaborator, and deploy live.',
     badge: 'Submission',
   },
   {
     step: 'STEP 07',
     title: 'Pre-Judging',
-    subtitle: 'Initial Technical & UI Evaluation',
-    description:
-      'Judges evaluate the submitted repositories and live deployed applications based on the official judging criteria.',
+    subtitle: 'Code & UI Review',
+    description: 'Judges inspect live URLs and GitHub repositories.',
     badge: 'Evaluation',
   },
   {
     step: 'STEP 08',
     title: 'Final Presentation',
-    subtitle: '4–5 Min Pitch + 2 Min Q&A',
-    description:
-      'Each team gets 4–5 minutes for project presentation and live demo, followed by 2 minutes of Q&A with the judging panel.',
+    subtitle: '4–5m Demo + 2m Q&A',
+    description: 'Live product demonstration followed by 2 minutes of judges Q&A.',
     badge: '7-Min Pitch',
   },
   {
     step: 'STEP 09',
-    title: 'Final Judging & Results',
-    subtitle: 'Winner Announcement & Recognition',
-    description:
-      'Final evaluation scores are compiled, followed by winner announcements, ₹10,000 prize distribution, and certificates for all participants.',
-    badge: 'Grand Finale',
+    title: 'Results & Awards',
+    subtitle: '₹10,000 Prize Pool',
+    description: 'Winner announcement, prizes, and participation certificates.',
+    badge: 'Finale',
   },
 ];
 
 export const WHAT_TO_BUILD_REQUIREMENTS = [
-  'Functional website/web application',
-  'Meaningful solution to the selected problem',
-  'Good UI/UX',
-  'Responsive design',
-  'AI integration/use where relevant',
-  'Working deployment',
-  'GitHub repository',
-  'Clean and understandable code',
+  'Functional web application',
+  'Solves the selected problem',
+  'Clean, responsive UI/UX',
+  'Smart AI usage / integration',
+  'Working live deployment URL',
+  'Public GitHub repository',
 ];
 
 export const PERMITTED_TECH_STACKS = [
   'React',
-  'HTML/CSS/JavaScript',
   'Next.js',
-  'Vue',
-  'Angular',
+  'Vue / Angular',
+  'HTML/CSS/JS',
   'Node.js',
-  'Any suitable web technology',
+  'Any Web Stack',
 ];
 
 export const AI_ALLOWED_USES = [
@@ -396,8 +376,6 @@ export const AI_ALLOWED_USES = [
   'Code generation',
   'Debugging',
   'Documentation',
-  'Content generation',
-  'Development assistance',
 ];
 
 export const AI_TOOL_EXAMPLES = [
@@ -407,34 +385,33 @@ export const AI_TOOL_EXAMPLES = [
   'GitHub Copilot',
   'Cursor',
   'Claude',
-  'Other AI development tools',
 ];
 
 export const SUBMISSION_CHECKLIST = [
   {
     number: '01',
     title: 'GitHub Repository Link',
-    description: 'Complete source code pushed to an accessible repository with clear structure.',
+    description: 'Complete source code pushed with official ACM collaborator added.',
   },
   {
     number: '02',
-    title: 'Live Deployed Website / Web Application Link',
-    description: 'Publicly reachable production URL (e.g., Vercel, Netlify, GitHub Pages, Render, Cloud Run).',
+    title: 'Live Deployed Web App Link',
+    description: 'Publicly accessible URL (Vercel, Netlify, Render, GitHub Pages, etc.).',
   },
   {
     number: '03',
     title: 'Team Details',
-    description: 'Accurate names, college details, and contact info for all 1–3 team members.',
+    description: 'Names, college, and contact info for all 1–3 members.',
   },
   {
     number: '04',
-    title: 'Selected Problem Statement / Domain',
-    description: 'Clearly specify which of the 4 official challenge domains your project solves.',
+    title: 'Selected Problem Statement',
+    description: 'Track number chosen from the event-day problem statements.',
   },
   {
     number: '05',
-    title: 'Short Project Description',
-    description: 'Concise overview of the problem addressed, core features, tech stack, and how AI was used.',
+    title: 'Short Project Summary',
+    description: 'Brief note on problem solved, stack, and AI tools used.',
   },
 ];
 
@@ -501,54 +478,54 @@ export const JUDGING_CRITERIA: JudgingCriterion[] = [
     id: 'innovation',
     title: 'Innovation & Creativity',
     percentage: 25,
-    description: 'Originality of the concept, creative problem-solving angle, and standout feature differentiation.',
-    keyQuestions: ['Does the solution offer a fresh approach?', 'Are features thoughtfully conceived for real users?'],
+    description: 'Originality and creative problem-solving approach.',
+    keyQuestions: ['Is the solution fresh and practical?'],
   },
   {
     id: 'problem-understanding',
-    title: 'Problem Understanding & Relevance',
+    title: 'Problem Relevance',
     percentage: 20,
-    description: 'Depth of alignment with the chosen challenge domain and practical utility for the target audience.',
-    keyQuestions: ['Does it directly solve the domain challenge?', 'Is the user workflow realistic and impactful?'],
+    description: 'Alignment with the selected event-day problem statement.',
+    keyQuestions: ['Does it directly solve the target problem?'],
   },
   {
     id: 'functionality',
-    title: 'Functionality & Technical Implementation',
+    title: 'Technical Implementation',
     percentage: 20,
-    description: 'Completeness of working features, code quality, responsiveness, and error-free execution.',
-    keyQuestions: ['Do core workflows run smoothly without breaking?', 'Can the team explain their code architecture?'],
+    description: 'Working features, clean code, and smooth execution.',
+    keyQuestions: ['Do core features work reliably?'],
   },
   {
     id: 'ui-ux',
-    title: 'UI/UX & Design',
+    title: 'UI/UX & Responsiveness',
     percentage: 15,
-    description: 'Visual clarity, intuitive navigation, mobile/desktop responsiveness, and accessible interface polish.',
-    keyQuestions: ['Is the interface intuitive at first glance?', 'Is layout responsive across screen sizes?'],
+    description: 'Visual clarity, intuitive layout, and mobile readiness.',
+    keyQuestions: ['Is the UI clean and responsive?'],
   },
   {
     id: 'ai-usage',
     title: 'Effective AI Usage',
     percentage: 10,
-    description: 'Meaningful integration of AI features in the product and/or smart usage of AI tools during development.',
-    keyQuestions: ['How effectively was AI leveraged to build or power the app?', 'Does the team understand the AI-generated code?'],
+    description: 'Smart use of AI tools/features with full code comprehension.',
+    keyQuestions: ['Can the team explain their AI-assisted code?'],
   },
   {
     id: 'deployment-presentation',
-    title: 'Deployment & Presentation',
+    title: 'Deployment & Pitch',
     percentage: 10,
-    description: 'Live accessible deployment URL, clean GitHub repository setup, and clarity of the 7-minute pitch.',
-    keyQuestions: ['Is the live URL deployed and accessible?', 'Was the demo structured and delivered within time?'],
+    description: 'Live deployed URL, GitHub repo, and 7-minute demo clarity.',
+    keyQuestions: ['Is the live link active and pitch clear?'],
   },
 ];
 
 export const PRESENTATION_STRUCTURE = [
-  { step: '01', title: 'Problem', detail: 'Define the real-world pain point and who it affects.' },
-  { step: '02', title: 'Solution', detail: 'Introduce your web application and its core value proposition.' },
-  { step: '03', title: 'Key Features', detail: 'Highlight the standout workflows built during the 4 hours.' },
-  { step: '04', title: 'AI Usage', detail: 'Explain which AI tools/models were used and how they helped.' },
-  { step: '05', title: 'Technology Stack', detail: 'Share the frontend, backend, and deployment tools chosen.' },
-  { step: '06', title: 'Live Demo', detail: 'Walk through the live deployed application in real time.' },
-  { step: '07', title: 'Future Scope', detail: 'Outline how the project can scale next.' },
+  { step: '01', title: 'Problem', detail: 'Core pain point addressed' },
+  { step: '02', title: 'Solution', detail: 'Your web app value prop' },
+  { step: '03', title: 'Features', detail: 'Key workflows built in 4h' },
+  { step: '04', title: 'AI Usage', detail: 'AI tools & models used' },
+  { step: '05', title: 'Tech Stack', detail: 'Frontend, backend & hosting' },
+  { step: '06', title: 'Live Demo', detail: 'Real-time walkthrough' },
+  { step: '07', title: 'Future Scope', detail: 'Next scalability steps' },
 ];
 
 export const WHY_PARTICIPATE_ITEMS = [
@@ -594,22 +571,22 @@ export const PRIZE_CATEGORIES = [
   {
     badge: 'TOP HONOR',
     title: 'WINNER',
-    subtitle: 'Prize + Recognition',
-    description: 'Awarded to the highest-scoring team across all judging criteria for excellence in execution, problem-solving, and live presentation.',
+    subtitle: 'Cash Prize + Trophy',
+    description: 'Highest overall score across execution, innovation, and live demo.',
     featured: true,
   },
   {
     badge: 'SPECIAL AWARD',
     title: 'BEST INNOVATION',
     subtitle: 'Special Prize',
-    description: 'Recognizes the team that demonstrates the most creative concept, novel use of AI, and impactful problem-solving architecture.',
+    description: 'Most creative concept, smart AI usage, and problem-solving impact.',
     featured: false,
   },
   {
     badge: 'SPECIAL AWARD',
     title: 'BEST UI/UX',
     subtitle: 'Special Prize',
-    description: 'Celebrates exceptional visual design, intuitive user flow, responsive layout craft, and front-end polish.',
+    description: 'Standout interface design, responsive layout, and user experience.',
     featured: false,
   },
 ];

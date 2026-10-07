@@ -42,24 +42,24 @@ export const ChallengeDomains: React.FC<ChallengeDomainsProps> = ({
             <div className="p-3.5 rounded-2xl bg-amber-400/20 border border-amber-400/40 text-amber-400 shrink-0 mt-0.5">
               <CalendarClock className="w-7 h-7" />
             </div>
-            <div className="space-y-1.5">
-              <div className="text-xs font-mono font-bold text-amber-400">
-                03. PROBLEM STATEMENTS · ON-SITE LIVE REVEAL
+            <div className="space-y-1">
+              <div className="text-[11px] font-mono font-semibold text-amber-400">
+                03. PROBLEM STATEMENTS · LIVE REVEAL
               </div>
               <h2
-                className={`font-display text-2xl sm:text-3xl font-extrabold ${
+                className={`font-display text-xl sm:text-2xl font-bold ${
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}
               >
-                Problem Statements Will Be Displayed on Event Day (22 Oct 2026)
+                Problem Statements Displayed on Event Day (22 Oct 2026)
               </h2>
               <p
-                className={`text-xs sm:text-sm leading-relaxed max-w-3xl ${
+                className={`text-xs leading-relaxed max-w-2xl ${
                   isDark ? 'text-slate-300' : 'text-slate-700'
                 }`}
               >
-                To ensure a fair competition, problem statements are not disclosed in advance. Four problem statements will be displayed live during the morning orientation at the venue, and teams may choose{' '}
-                <strong className="text-amber-400">ANY ONE</strong> problem statement to build during the 4-hour coding window.
+                4 problem statements will be revealed on-site during orientation. Teams choose{' '}
+                <strong className="text-amber-400">ANY ONE</strong> to build in 4 hours.
               </p>
             </div>
           </div>

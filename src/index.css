@@ -2,7 +2,7 @@
 
 @layer base {
   :root {
-    --font-display: 'Syne', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
   }
@@ -10,10 +10,16 @@
   body {
     font-family: var(--font-sans);
     overflow-x: hidden;
+    letter-spacing: -0.01em;
   }
 
-  h1, h2, .font-display {
+  h1, h2, h3, .font-display {
     font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .font-extrabold {
+    font-weight: 700;
   }
 
   .font-mono {

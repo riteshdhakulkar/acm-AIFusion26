@@ -35,7 +35,7 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
             </div>
 
             <h2
-              className={`font-display text-2xl sm:text-4xl font-extrabold tracking-tight ${
+              className={`font-display text-xl sm:text-3xl font-bold tracking-tight ${
                 isDark ? 'text-white' : 'text-slate-950'
               }`}
             >
@@ -43,24 +43,21 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
             </h2>
 
             <p
-              className={`text-sm sm:text-base leading-relaxed ${
+              className={`text-xs sm:text-sm leading-relaxed ${
                 isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              <strong className={isDark ? 'text-white' : 'text-slate-900'}>
-                National Level AI-Fusion 2026
-              </strong>{' '}
-              is an offline web development challenge where students solve real-world problems using modern web technologies and AI-powered development tools. Participants receive on-site problem statements, plan their solution, build a functional web app in 4 hours, deploy it live, and pitch to the judges.
+              An offline national webathon where teams of 1–3 students receive on-site problem statements, build a working web app using AI tools in 4 hours, deploy live, and present to judges.
             </p>
 
             <div
-              className={`p-4 rounded-xl border-l-4 border-amber-400 ${
+              className={`p-3.5 rounded-xl border-l-4 border-amber-400 ${
                 isDark
                   ? 'bg-violet-950/30 border-y border-r border-violet-500/25 text-white'
                   : 'bg-amber-50/70 border-y border-r border-amber-200 text-slate-900'
               }`}
             >
-              <p className="font-display text-base sm:text-lg font-bold">
+              <p className="font-display text-sm sm:text-base font-semibold">
                 “Build something useful. Build something innovative. Build it with AI.”
               </p>
             </div>

@@ -119,24 +119,24 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column: READY TO BUILD WITH AI? CTA */}
             <div className="lg:col-span-6 space-y-5">
-              <div className="text-xs font-mono font-bold tracking-wider text-amber-400">
-                09. OFFICIAL ENROLLMENT · LIMITED SLOTS
+              <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
+                09. OFFICIAL ENROLLMENT
               </div>
 
               <h2
-                className={`font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight ${
+                className={`font-display text-2xl sm:text-3xl font-bold tracking-tight ${
                   isDark ? 'text-white' : 'text-slate-950'
                 }`}
               >
-                READY TO BUILD WITH AI?
+                Ready to Build with AI?
               </h2>
 
               <p
-                className={`text-sm sm:text-base leading-relaxed ${
+                className={`text-xs sm:text-sm leading-relaxed ${
                   isDark ? 'text-slate-300' : 'text-slate-600'
                 }`}
               >
-                Form your team (1–3 members), compete on 22 October 2026 at PCE Nagpur, build with AI tools in 4 hours, deploy live, and pitch for the ₹10,000 prize pool.
+                Form a 1–3 member team and register by 15 Oct 2026 to compete for the ₹10,000 prize pool.
               </p>
 
               {/* Key Registration Details */}

@@ -40,27 +40,23 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
           {/* Left Column: Details & Actions */}
           <div className="lg:col-span-6 space-y-6">
             <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
-              12. OFFICIAL MEDIA &amp; BROCHURE
+              08. OFFICIAL MEDIA
             </div>
 
             <h2
-              className={`font-display text-3xl sm:text-5xl font-extrabold tracking-tight ${
+              className={`font-display text-2xl sm:text-3xl font-bold tracking-tight ${
                 isDark ? 'text-white' : 'text-slate-950'
               }`}
             >
-              OFFICIAL EVENT POSTER
+              Official Event Poster
             </h2>
 
             <p
-              className={`text-base sm:text-lg leading-relaxed ${
+              className={`text-xs sm:text-sm leading-relaxed ${
                 isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              Inspect or share the official poster for{' '}
-              <strong className={isDark ? 'text-white' : 'text-slate-900'}>
-                NATIONAL LEVEL AI-FUSION 2026
-              </strong>{' '}
-              presented by the Department of Computer Technology, Priyadarshini College of Engineering, Nagpur in association with PCE ACM Student Chapter &amp; PCE ACM-W Student Chapter.
+              Official brochure for <strong className={isDark ? 'text-white' : 'text-slate-900'}>NATIONAL LEVEL AI-FUSION 2026</strong> hosted by Dept. of Computer Technology, PCE Nagpur (ACM &amp; ACM-W).
             </p>
 
             <div
