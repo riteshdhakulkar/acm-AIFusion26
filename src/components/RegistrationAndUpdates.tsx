@@ -120,7 +120,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
             {/* Left Column: READY TO BUILD WITH AI? CTA */}
             <div className="lg:col-span-6 space-y-5">
               <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
-                09. OFFICIAL ENROLLMENT
+                07. OFFICIAL ENROLLMENT
               </div>
 
               <h2

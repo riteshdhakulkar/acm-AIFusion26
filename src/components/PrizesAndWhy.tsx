@@ -31,7 +31,7 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
             <div>
               <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
-                07. REWARDS &amp; HONORS
+                06. REWARDS &amp; HONORS
               </div>
               <h2
                 className={`font-display text-2xl sm:text-4xl font-extrabold tracking-tight mt-1 ${

@@ -94,7 +94,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
-              10. FREQUENTLY ASKED QUESTIONS
+              08. FREQUENTLY ASKED QUESTIONS
             </div>
             <h2
               className={`font-display text-2xl sm:text-3xl font-extrabold tracking-tight mt-0.5 ${
@@ -180,7 +180,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
             <div className="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <span className="text-[11px] font-mono font-bold text-sky-400">
-                  11. ORGANIZING COMMITTEE &amp; PATRONS
+                  09. ORGANIZING COMMITTEE &amp; PATRONS
                 </span>
                 <span className="text-slate-500">·</span>
                 <h2

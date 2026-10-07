@@ -25,7 +25,7 @@ export const JudgingAndPresentation: React.FC<JudgingAndPresentationProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
             <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
-              06. EVALUATION &amp; PITCH FORMAT
+              05. EVALUATION &amp; PITCH FORMAT
             </div>
             <h2
               className={`font-display text-2xl sm:text-4xl font-extrabold tracking-tight mt-1 ${

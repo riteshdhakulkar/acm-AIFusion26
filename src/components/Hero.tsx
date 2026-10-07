@@ -5,7 +5,6 @@ import { PceAcmLogo, PceAcmWLogo } from './BrandLogos';
 
 interface HeroProps {
   isDark: boolean;
-  onOpenPosterModal: () => void;
 }
 
 interface TimeLeft {
@@ -34,7 +33,7 @@ function calculateTimeLeft(): TimeLeft {
   };
 }
 
-export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
+export const Hero: React.FC<HeroProps> = ({ isDark }) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft);
 
   useEffect(() => {

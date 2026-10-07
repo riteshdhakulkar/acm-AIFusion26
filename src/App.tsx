@@ -7,7 +7,6 @@ import { TimelineSection } from './components/TimelineSection';
 import { SubmissionRequirements } from './components/SubmissionRequirements';
 import { JudgingAndPresentation } from './components/JudgingAndPresentation';
 import { PrizesAndWhy } from './components/PrizesAndWhy';
-import { PosterSection } from './components/PosterSection';
 import {
   RegistrationAndUpdates,
   TeamRegistrationRecord,
@@ -23,7 +22,6 @@ import { X } from 'lucide-react';
 
 export default function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
-  const [posterModalOpen, setPosterModalOpen] = useState<boolean>(false);
   const [dashboardModalOpen, setDashboardModalOpen] = useState<boolean>(false);
   const [showWaPopup, setShowWaPopup] = useState<boolean>(true);
 
@@ -173,13 +171,7 @@ export default function App() {
       />
 
       <main>
-        <Hero
-          isDark={isDark}
-          onOpenPosterModal={() => {
-            setPosterModalOpen(true);
-            logActivity('Viewed Official Event Poster in Fullscreen');
-          }}
-        />
+        <Hero isDark={isDark} />
 
         <AboutAndStats isDark={isDark} />
 
@@ -196,16 +188,6 @@ export default function App() {
         <JudgingAndPresentation isDark={isDark} />
 
         <PrizesAndWhy isDark={isDark} />
-
-        <PosterSection
-          isDark={isDark}
-          isModalOpen={posterModalOpen}
-          onOpenModal={() => {
-            setPosterModalOpen(true);
-            logActivity('Opened Official Event Poster Lightbox');
-          }}
-          onCloseModal={() => setPosterModalOpen(false)}
-        />
 
         <RegistrationAndUpdates
           isDark={isDark}
