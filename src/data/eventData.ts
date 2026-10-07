@@ -1,3 +1,7 @@
+import heroBackdropImg from '../assets/images/hero_tech_backdrop_1791384281241.jpg';
+import cyberLaptopImg from '../assets/images/poster_cyber_laptop_1791384301218.jpg';
+import campusLabImg from '../assets/images/campus_it_building_1791384317977.jpg';
+
 export interface ChallengeDomain {
   id: string;
   number: string;
@@ -96,9 +100,9 @@ export const EVENT_CONFIG = {
   acmGithubPlaceholder: '[OFFICIAL ACM GITHUB USERNAME WILL BE PROVIDED]',
   developerCredit: 'Ritesh Dhakulkar',
   GeneratedAssets: {
-    heroBackdrop: '/src/assets/images/hero_tech_backdrop_1791384281241.jpg',
-    cyberLaptop: '/src/assets/images/poster_cyber_laptop_1791384301218.jpg',
-    campusLab: '/src/assets/images/campus_it_building_1791384317977.jpg',
+    heroBackdrop: heroBackdropImg,
+    cyberLaptop: cyberLaptopImg,
+    campusLab: campusLabImg,
   },
 };
 
