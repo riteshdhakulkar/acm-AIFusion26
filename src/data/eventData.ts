@@ -86,7 +86,7 @@ export const EVENT_CONFIG = {
   registrationDeadline: '15 October 2026',
   venue: 'Computer Laboratory, IT Building, Computer Technology Department, Priyadarshini College of Engineering, Nagpur',
   shortVenue: 'Computer Laboratory, IT Building · CT Department, PCE',
-  format: 'Offline / On-site Webathon',
+  format: 'Offline / On-site Event',
   totalDurationHours: 6,
   codingDurationHours: 4,
   teamSize: '1–3 Members',
@@ -733,7 +733,7 @@ export const COMMUNITY_BLOG_UPDATES: BlogPost[] = [
     date: '05 October 2026',
     category: 'Preparation Guide',
     readTime: '3 min read',
-    title: 'Mastering the 4-Hour AI Webathon Sprint: How to Plan, Build & Deploy on Time',
+    title: 'Mastering the 4-Hour AI Sprint: How to Plan, Build & Deploy on Time',
     excerpt:
       'With 4 hours of focused coding time at AI-FUSION 2026, structuring your time between ideation, AI-assisted scaffolding, deployment, and pitch prep is critical.',
     author: 'PCE ACM & ACM-W Technical Team',
@@ -764,7 +764,7 @@ export const COMMUNITY_BLOG_UPDATES: BlogPost[] = [
     date: '28 September 2026',
     category: 'Submission Protocol',
     readTime: '2 min read',
-    title: 'GitHub Collaboration & Live Deployment Checklist for Webathon Teams',
+    title: 'GitHub Collaboration & Live Deployment Checklist for Participating Teams',
     excerpt:
       'Every participating squad must submit a live working URL and a GitHub repository with the official ACM account added as a collaborator.',
     author: 'PCE ACM Student Chapter',

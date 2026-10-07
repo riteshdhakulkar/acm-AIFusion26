@@ -165,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
           {/* Left Column: Primary Event Identity & CTAs */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold tracking-wide text-sky-400">
-              <span>🚀 NATIONAL LEVEL WEBATHON</span>
+              <span>🚀 NATIONAL LEVEL EVENT</span>
               <span aria-hidden="true">·</span>
               <span>OFFLINE ON-SITE CHALLENGE</span>
             </div>
@@ -206,7 +206,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
                 isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              A 6-hour on-site webathon (4 hours coding) at{' '}
+              A 6-hour on-site challenge (4 hours coding) at{' '}
               <span className={isDark ? 'text-white font-medium' : 'text-slate-900 font-medium'}>
                 PCE Nagpur
               </span>
@@ -234,7 +234,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
                     : 'border-slate-300 bg-white text-slate-900 hover:bg-slate-100'
                 }`}
               >
-                <span>EXPLORE WEBATHON</span>
+                <span>EXPLORE EVENT</span>
                 <ArrowDownRight className="w-4 h-4 text-sky-400" />
               </a>
             </div>
@@ -363,7 +363,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark, onOpenPosterModal }) => {
               <div className="p-4 space-y-1.5 leading-relaxed">
                 <div>
                   <span className="text-violet-400">const</span>{' '}
-                  <span className="text-sky-300">webathon</span> = {'{'}
+                  <span className="text-sky-300">aiFusion</span> = {'{'}
                 </div>
                 <div className="pl-4">
                   host: <span className="text-amber-300">&apos;CT Dept, PCE Nagpur (ACM &amp; ACM-W)&apos;</span>,

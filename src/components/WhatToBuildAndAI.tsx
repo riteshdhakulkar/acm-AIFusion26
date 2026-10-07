@@ -150,7 +150,7 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
                   isDark ? 'text-slate-200' : 'text-slate-700'
                 }`}
               >
-                Participants are free to use AI tools during the webathon. We encourage developers to harness modern AI platforms to prototype faster, write cleaner code, and solve harder problems in 4 hours.
+                Participants are free to use AI tools during the competition. We encourage developers to harness modern AI platforms to prototype faster, write cleaner code, and solve harder problems in 4 hours.
               </p>
 
               {/* Permitted AI Uses */}

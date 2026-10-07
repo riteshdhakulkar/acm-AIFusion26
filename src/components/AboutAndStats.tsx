@@ -31,7 +31,7 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-4">
             <div className="text-xs font-mono font-semibold tracking-wider text-sky-400">
-              01. ABOUT THE WEBATHON
+              01. ABOUT THE EVENT
             </div>
 
             <h2
@@ -47,7 +47,7 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
                 isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              An offline national webathon where teams of 1–3 students receive on-site problem statements, build a working web app using AI tools in 4 hours, deploy live, and present to judges.
+              An offline national challenge where teams of 1–3 students receive on-site problem statements, build a working web app using AI tools in 4 hours, deploy live, and present to judges.
             </p>
 
             <div

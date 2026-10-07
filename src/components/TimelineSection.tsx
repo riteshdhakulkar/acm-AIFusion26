@@ -26,7 +26,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ isDark }) => {
                 isDark ? 'text-white' : 'text-slate-950'
               }`}
             >
-              How the Webathon Works
+              How It Works
             </h2>
           </div>
           <p

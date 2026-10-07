@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ isDark }) => {
           {/* Column 3: Registration CTA (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400">
-              Join the Webathon
+              Join AI-FUSION 2026
             </h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               22 October 2026 · Computer Laboratory, IT Building, PCE Nagpur · Entry Fee: ₹100 / Member · Deadline: 15 October 2026.
