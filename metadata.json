@@ -1,0 +1,6 @@
+{
+  "name": "AI-FUSION 2026 | National Level Webathon",
+  "description": "Official portal for National Level AI-FUSION 2026 — Build With AI. A 6-hour offline web development challenge hosted by the Department of Computer Technology, Priyadarshini College of Engineering, Nagpur in association with PCE ACM & ACM-W Student Chapters.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
