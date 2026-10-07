@@ -4,7 +4,6 @@ import { Hero } from './components/Hero';
 import { AboutAndStats } from './components/AboutAndStats';
 import { ChallengeDomains } from './components/ChallengeDomains';
 import { TimelineSection } from './components/TimelineSection';
-import { WhatToBuildAndAI } from './components/WhatToBuildAndAI';
 import { SubmissionRequirements } from './components/SubmissionRequirements';
 import { JudgingAndPresentation } from './components/JudgingAndPresentation';
 import { PrizesAndWhy } from './components/PrizesAndWhy';
@@ -184,13 +183,7 @@ export default function App() {
 
         <TimelineSection isDark={isDark} />
 
-        <ChallengeDomains
-          isDark={isDark}
-          selectedDomainId={selectedDomainId}
-          onSelectDomain={handleSelectDomain}
-        />
-
-        <WhatToBuildAndAI isDark={isDark} />
+        <ChallengeDomains isDark={isDark} />
 
         <SubmissionRequirements
           isDark={isDark}

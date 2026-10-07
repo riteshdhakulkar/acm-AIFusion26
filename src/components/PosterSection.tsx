@@ -29,7 +29,7 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
   return (
     <section
       id="poster"
-      className={`py-20 lg:py-28 border-t ${
+      className={`py-12 lg:py-16 border-t ${
         isDark
           ? 'bg-[#080B20] border-violet-500/20'
           : 'bg-white border-slate-200'

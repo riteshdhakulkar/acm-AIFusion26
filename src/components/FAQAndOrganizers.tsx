@@ -4,14 +4,12 @@ import {
   Phone,
   MapPin,
   CheckCircle2,
-  Search,
   MessageSquare,
 } from 'lucide-react';
 import {
   FAQ_ITEMS,
   FACULTY_ORGANIZERS,
   STUDENT_CONTACTS,
-  EVENT_CONFIG,
 } from '../data/eventData';
 
 interface FAQAndOrganizersProps {
@@ -24,8 +22,6 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
   onLogInquiry,
 }) => {
   const [openFaqId, setOpenFaqId] = useState<string>('q1');
-  const [faqCategory, setFaqCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Contact Inquiry Form State (WhatsApp Only)
   const [inqName, setInqName] = useState('');
@@ -39,14 +35,8 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
     whatsappUrl: string;
   } | null>(null);
 
-  const filteredFaqs = FAQ_ITEMS.filter((item) => {
-    const matchesCat = faqCategory === 'all' || item.category === faqCategory;
-    const matchesSearch =
-      !searchQuery.trim() ||
-      item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.answer.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCat && matchesSearch;
-  });
+  // Show the 6 most essential FAQs to keep the page concise
+  const essentialFaqs = FAQ_ITEMS.slice(0, 6);
 
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,86 +82,36 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
 
   return (
     <>
-      {/* FAQ ACCORDION SECTION */}
+      {/* COMPACT FAQ ACCORDION SECTION */}
       <section
         id="faq"
-        className={`py-20 lg:py-28 border-t bg-circuit-grid ${
+        className={`py-12 lg:py-16 border-t bg-circuit-grid ${
           isDark
             ? 'bg-[#060714] border-violet-500/20'
             : 'bg-slate-50 border-slate-200'
         }`}
       >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
             <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
-              15. FREQUENTLY ASKED QUESTIONS
+              10. FREQUENTLY ASKED QUESTIONS
             </div>
             <h2
-              className={`font-display text-3xl sm:text-5xl font-extrabold tracking-tight ${
+              className={`font-display text-2xl sm:text-4xl font-extrabold tracking-tight mt-1 ${
                 isDark ? 'text-white' : 'text-slate-950'
               }`}
             >
-              Everything You Need to Know
+              Quick Answers
             </h2>
           </div>
 
-          {/* Interactive Filter Tabs + Search Input */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-            <div
-              className={`flex items-center gap-1 p-1 rounded-xl border overflow-x-auto max-w-full ${
-                isDark
-                  ? 'bg-[#0C0F26] border-white/10'
-                  : 'bg-white border-slate-200'
-              }`}
-            >
-              {[
-                { id: 'all', label: 'All (12)' },
-                { id: 'general', label: 'General' },
-                { id: 'technical', label: 'AI & Coding' },
-                { id: 'submission', label: 'GitHub & Deploy' },
-                { id: 'judging', label: 'Judging' },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => setFaqCategory(tab.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors whitespace-nowrap ${
-                    faqCategory === tab.id
-                      ? 'bg-violet-600 text-white'
-                      : isDark
-                      ? 'text-slate-400 hover:text-white'
-                      : 'text-slate-600 hover:text-slate-950'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="relative w-full sm:w-64">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="search"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search questions..."
-                className={`w-full pl-9 pr-3.5 py-2 rounded-xl border text-xs sm:text-sm focus:outline-none focus:border-violet-400 ${
-                  isDark
-                    ? 'bg-[#0C0F26] border-white/15 text-white'
-                    : 'bg-white border-slate-200 text-slate-900'
-                }`}
-              />
-            </div>
-          </div>
-
-          {/* 12 Official FAQs Accordion */}
-          <div className="space-y-3">
-            {filteredFaqs.map((faq) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            {essentialFaqs.map((faq) => {
               const isOpen = openFaqId === faq.id;
               return (
                 <div
                   key={faq.id}
-                  className={`rounded-2xl border overflow-hidden transition-colors ${
+                  className={`rounded-xl border overflow-hidden transition-colors self-start ${
                     isOpen
                       ? isDark
                         ? 'bg-[#0E1230] border-violet-400/50'
@@ -185,17 +125,17 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                     type="button"
                     onClick={() => setOpenFaqId(isOpen ? '' : faq.id)}
                     aria-expanded={isOpen}
-                    className="w-full px-5 sm:px-6 py-4 text-left flex items-center justify-between gap-4"
+                    className="w-full px-4 sm:px-5 py-3.5 text-left flex items-center justify-between gap-3"
                   >
                     <span
-                      className={`font-display text-base sm:text-lg font-bold ${
+                      className={`font-display text-sm sm:text-base font-bold ${
                         isDark ? 'text-white' : 'text-slate-900'
                       }`}
                     >
                       {faq.question}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-amber-400 shrink-0 transition-transform duration-200 ${
+                      className={`w-4 h-4 text-amber-400 shrink-0 transition-transform duration-200 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                     />
@@ -203,7 +143,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
 
                   {isOpen && (
                     <div
-                      className={`px-5 sm:px-6 pb-5 pt-1 text-sm sm:text-base leading-relaxed border-t ${
+                      className={`px-4 sm:px-5 pb-4 pt-1 text-xs sm:text-sm leading-relaxed border-t ${
                         isDark
                           ? 'border-white/5 text-slate-300'
                           : 'border-slate-100 text-slate-600'
@@ -222,62 +162,52 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
       {/* EVENT ORGANIZERS, CONTACT & VENUE MAP SECTION */}
       <section
         id="contact"
-        className={`py-20 lg:py-28 border-t ${
+        className={`py-12 lg:py-16 border-t ${
           isDark
             ? 'bg-[#080B20] border-violet-500/20'
             : 'bg-white border-slate-200'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* PART 1: FACULTY & INSTITUTIONAL LEADERSHIP */}
           <div>
-            <div className="text-center max-w-3xl mx-auto mb-12 space-y-2">
+            <div className="mb-6">
               <div className="text-xs font-mono font-semibold tracking-wider text-sky-400">
-                16. ORGANIZING COMMITTEE &amp; PATRONS
+                11. ORGANIZING COMMITTEE &amp; PATRONS
               </div>
               <h2
-                className={`font-display text-3xl sm:text-5xl font-extrabold tracking-tight ${
+                className={`font-display text-2xl sm:text-4xl font-extrabold tracking-tight mt-1 ${
                   isDark ? 'text-white' : 'text-slate-950'
                 }`}
               >
                 Event Organizers
               </h2>
-              <p
-                className={`text-sm sm:text-base ${
-                  isDark ? 'text-slate-300' : 'text-slate-600'
-                }`}
-              >
-                Department of Computer Technology · Priyadarshini College of Engineering, Nagpur
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
               {FACULTY_ORGANIZERS.map((person) => (
                 <div
                   key={person.name}
-                  className={`p-5 rounded-2xl border text-center flex flex-col justify-between ${
+                  className={`p-4 rounded-xl border text-center flex flex-col justify-between ${
                     isDark
                       ? 'bg-[#0C0F26] border-violet-500/30'
                       : 'bg-slate-50 border-slate-200'
                   }`}
                 >
                   <div>
-                    <div className="w-10 h-10 mx-auto rounded-full bg-violet-500/15 border border-violet-400/30 flex items-center justify-center font-mono text-xs font-bold text-amber-400 mb-3">
-                      PCE
-                    </div>
                     <h3
-                      className={`font-display text-base sm:text-lg font-extrabold ${
+                      className={`font-display text-sm sm:text-base font-extrabold ${
                         isDark ? 'text-white' : 'text-slate-900'
                       }`}
                     >
                       {person.name}
                     </h3>
-                    <p className="text-xs sm:text-sm font-mono font-bold text-amber-400 mt-1">
+                    <p className="text-xs font-mono font-bold text-amber-400 mt-0.5">
                       {person.role}
                     </p>
                   </div>
                   <p
-                    className={`text-[11px] mt-3 pt-2 border-t ${
+                    className={`text-[11px] mt-2 pt-2 border-t ${
                       isDark
                         ? 'border-white/10 text-slate-400'
                         : 'border-slate-200 text-slate-500'
@@ -292,65 +222,53 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
 
           {/* PART 2: STUDENT COORDINATORS CONTACT (5 Coordinators including Ritesh Dhakulkar) */}
           <div>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-5">
               <div>
                 <span className="text-xs font-mono font-bold text-amber-400">
-                  ANY QUERIES? CONTACT US
+                  DIRECT WHATSAPP &amp; CALL SUPPORT
                 </span>
                 <h3
-                  className={`font-display text-2xl sm:text-3xl font-extrabold mt-1 ${
+                  className={`font-display text-xl sm:text-2xl font-extrabold mt-0.5 ${
                     isDark ? 'text-white' : 'text-slate-900'
                   }`}
                 >
                   Student Coordinators
                 </h3>
               </div>
-              <p
-                className={`text-xs font-mono ${
-                  isDark ? 'text-slate-400' : 'text-slate-600'
-                }`}
-              >
-                Call or WhatsApp any coordinator directly for instant assistance
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
               {STUDENT_CONTACTS.map((contact) => {
                 const waDigits = contact.cleanPhone.replace('+', '');
                 return (
                   <div
                     key={contact.name}
-                    className={`p-5 rounded-2xl border flex flex-col justify-between gap-4 transition-transform hover:-translate-y-0.5 ${
+                    className={`p-4 rounded-xl border flex flex-col justify-between gap-3 ${
                       isDark
-                        ? 'bg-[#0C0F26] border-violet-500/25 hover:border-amber-400/60'
-                        : 'bg-slate-50 border-slate-200 hover:border-violet-400'
+                        ? 'bg-[#0C0F26] border-violet-500/25'
+                        : 'bg-slate-50 border-slate-200'
                     }`}
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center shrink-0">
-                        <Phone className="w-4 h-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <h4
-                          className={`font-display text-base font-bold truncate ${
-                            isDark ? 'text-white' : 'text-slate-900'
-                          }`}
-                        >
-                          {contact.name}
-                        </h4>
-                        <p className="text-[11px] font-mono text-slate-400">
-                          {contact.role}
-                        </p>
-                        <p className="font-mono tabular-nums text-xs sm:text-sm font-bold text-amber-400 mt-1">
-                          {contact.phone}
-                        </p>
-                      </div>
+                    <div>
+                      <h4
+                        className={`font-display text-sm sm:text-base font-bold truncate ${
+                          isDark ? 'text-white' : 'text-slate-900'
+                        }`}
+                      >
+                        {contact.name}
+                      </h4>
+                      <p className="text-[11px] font-mono text-slate-400">
+                        {contact.role}
+                      </p>
+                      <p className="font-mono tabular-nums text-xs sm:text-sm font-bold text-amber-400 mt-1">
+                        {contact.phone}
+                      </p>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/10">
                       <a
                         href={`tel:${contact.cleanPhone}`}
-                        className={`inline-flex items-center justify-center gap-1 py-1.5 px-2.5 rounded-lg text-xs font-mono font-bold border transition-colors whitespace-nowrap ${
+                        className={`inline-flex items-center justify-center gap-1 py-1.5 px-2 rounded-lg text-xs font-mono font-bold border transition-colors ${
                           isDark
                             ? 'border-white/15 text-slate-200 hover:bg-white/10'
                             : 'border-slate-300 text-slate-800 hover:bg-slate-200/70'
@@ -365,7 +283,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1 py-1.5 px-2.5 rounded-lg text-xs font-mono font-bold bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 hover:bg-emerald-500/30 transition-colors whitespace-nowrap"
+                        className="inline-flex items-center justify-center gap-1 py-1.5 px-2 rounded-lg text-xs font-mono font-bold bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 hover:bg-emerald-500/30 transition-colors"
                       >
                         <MessageSquare className="w-3 h-3" />
                         <span>WhatsApp</span>
@@ -377,9 +295,9 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
             </div>
           </div>
 
-          {/* PART 3: VENUE SHOWCASE, INTERACTIVE MAP & INQUIRY FORM */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Venue Card & Map */}
+          {/* PART 3: VENUE MAP & WHATSAPP INQUIRY FORM */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            {/* Venue Card & Embedded Google Map */}
             <div
               className={`lg:col-span-7 rounded-2xl border overflow-hidden ${
                 isDark
@@ -387,59 +305,38 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                   : 'bg-slate-50 border-slate-200'
               }`}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2">
-                <div className="p-6 space-y-3 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-sky-400">
-                      <MapPin className="w-4 h-4" />
-                      <span>ON-SITE VENUE LOCATION</span>
-                    </div>
-                    <h3
-                      className={`font-display text-xl font-extrabold ${
-                        isDark ? 'text-white' : 'text-slate-900'
-                      }`}
-                    >
-                      Computer Laboratory, IT Building
-                    </h3>
-                    <p
-                      className={`text-xs sm:text-sm leading-relaxed ${
-                        isDark ? 'text-slate-300' : 'text-slate-600'
-                      }`}
-                    >
-                      Computer Technology Department,
-                      <br />
-                      Priyadarshini College of Engineering,
-                      <br />
-                      Hingna Road, Digdoh Hills, Nagpur, Maharashtra 440019
-                    </p>
+              <div className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-sky-400">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>ON-SITE VENUE LOCATION</span>
                   </div>
-
-                  <div className="pt-3">
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=Priyadarshini+College+of+Engineering+Nagpur"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400 hover:underline"
-                    >
-                      <span>Open in Google Maps ↗</span>
-                    </a>
-                  </div>
+                  <h3
+                    className={`font-display text-lg sm:text-xl font-extrabold mt-0.5 ${
+                      isDark ? 'text-white' : 'text-slate-900'
+                    }`}
+                  >
+                    Computer Laboratory, IT Building — PCE Nagpur
+                  </h3>
+                  <p
+                    className={`text-xs mt-0.5 ${
+                      isDark ? 'text-slate-300' : 'text-slate-600'
+                    }`}
+                  >
+                    Priyadarshini College of Engineering, Hingna Road, Digdoh Hills, Nagpur 440019
+                  </p>
                 </div>
 
-                <div className="relative min-h-[220px] bg-slate-900">
-                  <img
-                    src={EVENT_CONFIG.GeneratedAssets.campusLab}
-                    alt="Computer Laboratory, IT Building, Priyadarshini College of Engineering, Nagpur"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).style.display = 'none';
-                    }}
-                  />
-                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Priyadarshini+College+of+Engineering+Nagpur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-amber-400 text-slate-950 shrink-0"
+                >
+                  <span>Open in Maps ↗</span>
+                </a>
               </div>
 
-              {/* Embedded Interactive Google Map Frame for Priyadarshini College of Engineering, Nagpur */}
               <div className="border-t border-white/10 h-64 w-full">
                 <iframe
                   title="Priyadarshini College of Engineering, Nagpur Google Map"
@@ -453,69 +350,59 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
 
             {/* Direct Coordinator Inquiry Form (WhatsApp Only) */}
             <div
-              className={`lg:col-span-5 p-6 sm:p-8 rounded-2xl border ${
+              className={`lg:col-span-5 p-5 sm:p-6 rounded-2xl border ${
                 isDark
                   ? 'bg-[#0C0F26] border-violet-500/30'
                   : 'bg-slate-50 border-slate-200'
               }`}
             >
               <h3
-                className={`font-display text-xl font-extrabold ${
+                className={`font-display text-lg sm:text-xl font-extrabold ${
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}
               >
                 Send an Event Inquiry on WhatsApp
               </h3>
               <p
-                className={`text-xs sm:text-sm mt-1 mb-4 ${
+                className={`text-xs mt-1 mb-3.5 ${
                   isDark ? 'text-slate-400' : 'text-slate-600'
                 }`}
               >
-                Your message is sent directly to the selected{' '}
-                <strong className="text-emerald-400">
-                  Student Coordinator&apos;s WhatsApp
-                </strong>{' '}
-                for instant reply.
+                Message any Student Coordinator directly on WhatsApp.
               </p>
 
               {inqError && (
-                <div className="mb-4 p-3 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-300 text-xs">
+                <div className="mb-3 p-2.5 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-300 text-xs">
                   {inqError}
                 </div>
               )}
 
               {inqSubmitted && (
-                <div className="mb-4 p-4 rounded-xl bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs space-y-2">
-                  <div className="flex items-start gap-2 font-bold">
-                    <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
-                    <span>
-                      WhatsApp chat opened for {inqSubmitted.recipientName}!
-                    </span>
-                  </div>
-                  <div className="pt-1">
-                    <a
-                      href={inqSubmitted.whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-bold bg-emerald-500 text-slate-950"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
-                      <span>Click here if WhatsApp did not open ↗</span>
-                    </a>
-                  </div>
+                <div className="mb-3 p-3 rounded-xl bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <CheckCircle2 className="w-4 h-4 shrink-0" />
+                    Opened for {inqSubmitted.recipientName}
+                  </span>
+                  <a
+                    href={inqSubmitted.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline font-bold shrink-0"
+                  >
+                    Re-open ↗
+                  </a>
                 </div>
               )}
 
-              <form onSubmit={handleInquirySubmit} noValidate className="space-y-4">
-                {/* Choose Coordinator Recipient */}
+              <form onSubmit={handleInquirySubmit} noValidate className="space-y-3">
                 <div>
-                  <label className="block text-xs font-mono font-semibold text-slate-400 mb-1">
-                    SELECT STUDENT COORDINATOR (WHATSAPP)
+                  <label className="block text-[11px] font-mono font-semibold text-slate-400 mb-1">
+                    COORDINATOR (WHATSAPP)
                   </label>
                   <select
                     value={selectedCoordinatorPhone}
                     onChange={(e) => setSelectedCoordinatorPhone(e.target.value)}
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm font-medium ${
+                    className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm font-medium ${
                       isDark
                         ? 'bg-[#07091A] border-white/15 text-white'
                         : 'bg-white border-slate-300 text-slate-900'
@@ -532,50 +419,52 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                   </select>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-mono font-semibold text-slate-400 mb-1">
-                    YOUR NAME *
-                  </label>
-                  <input
-                    type="text"
-                    value={inqName}
-                    onChange={(e) => setInqName(e.target.value)}
-                    placeholder="Enter your full name"
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
-                      isDark
-                        ? 'bg-[#07091A] border-white/15 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div>
+                    <label className="block text-[11px] font-mono font-semibold text-slate-400 mb-1">
+                      YOUR NAME *
+                    </label>
+                    <input
+                      type="text"
+                      value={inqName}
+                      onChange={(e) => setInqName(e.target.value)}
+                      placeholder="Full name"
+                      className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
+                        isDark
+                          ? 'bg-[#07091A] border-white/15 text-white'
+                          : 'bg-white border-slate-300 text-slate-900'
+                      }`}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-mono font-semibold text-slate-400 mb-1">
+                      PHONE (OPTIONAL)
+                    </label>
+                    <input
+                      type="tel"
+                      value={inqPhone}
+                      onChange={(e) => setInqPhone(e.target.value)}
+                      placeholder="+91 98765 43210"
+                      className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
+                        isDark
+                          ? 'bg-[#07091A] border-white/15 text-white'
+                          : 'bg-white border-slate-300 text-slate-900'
+                      }`}
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono font-semibold text-slate-400 mb-1">
-                    YOUR WHATSAPP / PHONE NUMBER (OPTIONAL)
-                  </label>
-                  <input
-                    type="tel"
-                    value={inqPhone}
-                    onChange={(e) => setInqPhone(e.target.value)}
-                    placeholder="+91 98765 43210"
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
-                      isDark
-                        ? 'bg-[#07091A] border-white/15 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono font-semibold text-slate-400 mb-1">
+                  <label className="block text-[11px] font-mono font-semibold text-slate-400 mb-1">
                     QUESTION / MESSAGE *
                   </label>
                   <textarea
-                    rows={3}
+                    rows={2}
                     value={inqMessage}
                     onChange={(e) => setInqMessage(e.target.value)}
-                    placeholder="Ask about registration, team size, on-site lab rules..."
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
+                    placeholder="Ask about registration, team size, rules..."
+                    className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
                       isDark
                         ? 'bg-[#07091A] border-white/15 text-white'
                         : 'bg-white border-slate-300 text-slate-900'
@@ -585,7 +474,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/20 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>Send Inquiry on WhatsApp</span>
