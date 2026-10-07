@@ -97,6 +97,7 @@ export const EVENT_CONFIG = {
   prizePoolNumeric: 10000,
   eligibility: 'Open to students from all colleges and all branches.',
   registrationUrl: 'https://forms.gle/ijX44sPpL7GuRHa4A',
+  whatsappGroupUrl: 'https://chat.whatsapp.com/FVuxUsU7ja7JTFrrKTY0Pk',
   acmGithubPlaceholder: '[OFFICIAL ACM GITHUB USERNAME WILL BE PROVIDED]',
   developerCredit: 'Ritesh Dhakulkar',
   GeneratedAssets: {
