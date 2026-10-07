@@ -19,11 +19,13 @@ import {
 } from './components/ParticipantDashboardModal';
 import { Footer } from './components/Footer';
 import { CHALLENGE_DOMAINS, EVENT_CONFIG } from './data/eventData';
+import { X } from 'lucide-react';
 
 export default function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
   const [posterModalOpen, setPosterModalOpen] = useState<boolean>(false);
   const [dashboardModalOpen, setDashboardModalOpen] = useState<boolean>(false);
+  const [showWaPopup, setShowWaPopup] = useState<boolean>(true);
 
   const [selectedDomainId, setSelectedDomainId] = useState<string>(() => {
     try {
@@ -219,23 +221,56 @@ export default function App() {
 
       <Footer isDark={isDark} />
 
-      {/* Global Small Floating WhatsApp Logo Button */}
-      <a
-        href={EVENT_CONFIG.whatsappGroupUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Join Official WhatsApp Group"
-        aria-label="Join Official AI-FUSION 2026 WhatsApp Group"
-        className="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full bg-[#060714]/90 border border-[#25D366]/60 shadow-lg shadow-[#25D366]/25 flex items-center justify-center transition-transform duration-150 hover:scale-110 active:scale-95"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          className="w-7 h-7 fill-[#25D366]"
-          aria-hidden="true"
+      {/* Global Small Floating WhatsApp Logo Button + Dismissible "Join the Group" Popup */}
+      <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5">
+        {showWaPopup && (
+          <div
+            className={`flex items-center gap-2 pl-3.5 pr-2 py-2 rounded-xl border shadow-xl backdrop-blur-md ${
+              isDark
+                ? 'bg-[#0B0F26]/95 border-[#25D366]/50 text-white'
+                : 'bg-white/95 border-[#25D366]/60 text-slate-900'
+            }`}
+          >
+            <a
+              href={EVENT_CONFIG.whatsappGroupUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-extrabold tracking-wide hover:text-[#25D366] transition-colors whitespace-nowrap"
+            >
+              Join the Group
+            </a>
+            <button
+              type="button"
+              onClick={() => setShowWaPopup(false)}
+              aria-label="Close WhatsApp popup"
+              className={`p-1 rounded-lg transition-colors ${
+                isDark
+                  ? 'text-slate-400 hover:text-white hover:bg-white/10'
+                  : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+
+        <a
+          href={EVENT_CONFIG.whatsappGroupUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Join Official WhatsApp Group"
+          aria-label="Join Official AI-FUSION 2026 WhatsApp Group"
+          className="w-12 h-12 rounded-full bg-[#060714]/90 border border-[#25D366]/60 shadow-lg shadow-[#25D366]/25 flex items-center justify-center transition-transform duration-150 hover:scale-110 active:scale-95 shrink-0"
         >
-          <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.461 3.492 1.336 5.016L2 22l5.156-1.352a9.927 9.927 0 0 0 4.875 1.281h.004c5.512 0 9.965-4.453 9.965-9.969 0-2.664-1.035-5.168-2.918-7.051A9.907 9.907 0 0 0 12.031 2zm0 18.281h-.004a8.268 8.268 0 0 1-4.219-1.156l-.301-.18-3.141.824.84-3.063-.199-.313a8.257 8.257 0 0 1-1.277-4.426c0-4.578 3.727-8.305 8.305-8.305 2.219 0 4.301.863 5.867 2.434a8.248 8.248 0 0 1 2.43 5.871c0 4.582-3.723 8.314-8.301 8.314zm4.555-6.219c-.25-.125-1.477-.73-1.707-.813-.227-.082-.395-.125-.559.125-.168.25-.645.813-.789.98-.145.164-.289.188-.539.063-.25-.125-1.055-.387-2.008-1.238-.742-.66-1.242-1.48-1.387-1.73-.145-.25-.016-.383.109-.508.113-.113.25-.293.375-.438.125-.145.168-.25.25-.414.082-.168.043-.313-.02-.438-.063-.125-.559-1.352-.766-1.852-.203-.484-.41-.418-.559-.426l-.477-.008c-.168 0-.438.063-.668.313-.227.25-.875.855-.875 2.082s.895 2.418 1.02 2.582c.125.168 1.762 2.691 4.27 3.773.598.258 1.063.41 1.426.527.598.191 1.145.164 1.574.102.48-.07 1.477-.605 1.688-1.188.207-.586.207-1.086.145-1.188-.063-.105-.227-.168-.477-.293z" />
-        </svg>
-      </a>
+          <svg
+            viewBox="0 0 24 24"
+            className="w-7 h-7 fill-[#25D366]"
+            aria-hidden="true"
+          >
+            <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.461 3.492 1.336 5.016L2 22l5.156-1.352a9.927 9.927 0 0 0 4.875 1.281h.004c5.512 0 9.965-4.453 9.965-9.969 0-2.664-1.035-5.168-2.918-7.051A9.907 9.907 0 0 0 12.031 2zm0 18.281h-.004a8.268 8.268 0 0 1-4.219-1.156l-.301-.18-3.141.824.84-3.063-.199-.313a8.257 8.257 0 0 1-1.277-4.426c0-4.578 3.727-8.305 8.305-8.305 2.219 0 4.301.863 5.867 2.434a8.248 8.248 0 0 1 2.43 5.871c0 4.582-3.723 8.314-8.301 8.314zm4.555-6.219c-.25-.125-1.477-.73-1.707-.813-.227-.082-.395-.125-.559.125-.168.25-.645.813-.789.98-.145.164-.289.188-.539.063-.25-.125-1.055-.387-2.008-1.238-.742-.66-1.242-1.48-1.387-1.73-.145-.25-.016-.383.109-.508.113-.113.25-.293.375-.438.125-.145.168-.25.25-.414.082-.168.043-.313-.02-.438-.063-.125-.559-1.352-.766-1.852-.203-.484-.41-.418-.559-.426l-.477-.008c-.168 0-.438.063-.668.313-.227.25-.875.855-.875 2.082s.895 2.418 1.02 2.582c.125.168 1.762 2.691 4.27 3.773.598.258 1.063.41 1.426.527.598.191 1.145.164 1.574.102.48-.07 1.477-.605 1.688-1.188.207-.586.207-1.086.145-1.188-.063-.105-.227-.168-.477-.293z" />
+          </svg>
+        </a>
+      </div>
 
       <ParticipantDashboardModal
         isOpen={dashboardModalOpen}
