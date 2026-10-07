@@ -75,18 +75,18 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 overflow-hidden">
           <a
             href="#sponsorship"
-            className="inline-flex items-center gap-1 font-semibold text-emerald-400 hover:underline truncate"
+            className="inline-flex items-center gap-2 font-medium text-emerald-400 hover:underline truncate"
           >
-            <span>🤝 Open for Sponsorship &amp; Collaboration</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+            <span>Open for Sponsorship &amp; Collaboration</span>
           </a>
           <span className="ml-auto inline-flex items-center gap-1 tracking-wide shrink-0">
-            <span className="hidden xs:inline text-slate-400">
+            <span className="hidden sm:inline text-slate-400">
               Designed &amp; Developed by
             </span>
-            <span className="xs:hidden text-slate-400">Dev:</span>
             <strong
               className={
-                isDark ? 'text-amber-300 font-bold' : 'text-violet-800 font-bold'
+                isDark ? 'text-amber-300 font-semibold' : 'text-violet-800 font-semibold'
               }
             >
               {EVENT_CONFIG.developerCredit}

@@ -41,9 +41,9 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
                 Prizes &amp; Recognition — {EVENT_CONFIG.prizePool} Pool
               </h2>
             </div>
-            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-bold text-violet-300">
+            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold text-violet-300">
               <Award className="w-4 h-4 text-amber-400" />
-              <span>📜 Certificates Provided for All Participants</span>
+              <span>Certificates Provided for All Participants</span>
             </div>
           </div>
 

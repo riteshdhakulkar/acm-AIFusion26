@@ -162,11 +162,10 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
         {/* Main Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left Column: Primary Event Identity & CTAs */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold tracking-wide text-sky-400">
-              <span>🚀 NATIONAL LEVEL EVENT</span>
-              <span aria-hidden="true">·</span>
-              <span>OFFLINE ON-SITE CHALLENGE</span>
+          <div className="lg:col-span-7 space-y-5 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-medium tracking-wider text-sky-400">
+              <span className="w-2 h-2 rounded-full bg-sky-400" />
+              <span>// NATIONAL LEVEL · ON-SITE CODING CHALLENGE</span>
             </div>
 
             <div className="space-y-1.5">
@@ -260,7 +259,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
                 href="#sponsorship"
                 className="font-semibold text-emerald-400 hover:underline"
               >
-                🤝 Open for Sponsorship &amp; Collaboration
+                Open for Sponsorship &amp; Collaboration →
               </a>
             </div>
           </div>

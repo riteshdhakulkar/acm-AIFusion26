@@ -110,10 +110,10 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`rounded-3xl border p-6 sm:p-10 ${
+          className={`rounded-2xl border p-6 sm:p-8 ${
             isDark
-              ? 'bg-gradient-to-br from-[#130E36] via-[#0B0E26] to-[#080A1A] border-amber-400/50 shadow-2xl shadow-violet-950/60'
-              : 'bg-white border-amber-400 shadow-xl'
+              ? 'bg-[#0A0D20] border-white/15'
+              : 'bg-white border-slate-300 shadow-lg'
           }`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -247,15 +247,15 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[11px] font-mono text-slate-400 mb-1">
-                      TEAM NAME (teamname) *
+                      TEAM NAME *
                     </label>
                     <input
                       type="text"
                       required
                       value={teamName}
                       onChange={(e) => setTeamName(e.target.value)}
-                      placeholder="Team Name"
-                      className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
+                      placeholder="e.g. ByteBuilders"
+                      className={`w-full px-3 py-2 rounded-lg border text-xs sm:text-sm ${
                         isDark
                           ? 'bg-[#0C1029] border-white/15 text-white'
                           : 'bg-white border-slate-300 text-slate-900'
@@ -265,15 +265,15 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
 
                   <div>
                     <label className="block text-[11px] font-mono text-slate-400 mb-1">
-                      LEAD NAME (leadname) *
+                      TEAM LEAD NAME *
                     </label>
                     <input
                       type="text"
                       required
                       value={leadName}
                       onChange={(e) => setLeadName(e.target.value)}
-                      placeholder="Lead Full Name"
-                      className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
+                      placeholder="Lead full name"
+                      className={`w-full px-3 py-2 rounded-lg border text-xs sm:text-sm ${
                         isDark
                           ? 'bg-[#0C1029] border-white/15 text-white'
                           : 'bg-white border-slate-300 text-slate-900'
@@ -285,7 +285,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[11px] font-mono text-slate-400 mb-1">
-                      MOBILE (mobile) *
+                      WHATSAPP / MOBILE *
                     </label>
                     <input
                       type="tel"
@@ -293,7 +293,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                       value={leadPhone}
                       onChange={(e) => setLeadPhone(e.target.value)}
                       placeholder="+91 98765 43210"
-                      className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
+                      className={`w-full px-3 py-2 rounded-lg border text-xs sm:text-sm ${
                         isDark
                           ? 'bg-[#0C1029] border-white/15 text-white'
                           : 'bg-white border-slate-300 text-slate-900'
@@ -303,7 +303,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
 
                   <div>
                     <label className="block text-[11px] font-mono text-slate-400 mb-1">
-                      EMAIL (email) *
+                      EMAIL ADDRESS *
                     </label>
                     <input
                       type="email"
@@ -311,7 +311,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                       value={leadEmail}
                       onChange={(e) => setLeadEmail(e.target.value)}
                       placeholder="you@college.edu"
-                      className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
+                      className={`w-full px-3 py-2 rounded-lg border text-xs sm:text-sm ${
                         isDark
                           ? 'bg-[#0C1029] border-white/15 text-white'
                           : 'bg-white border-slate-300 text-slate-900'
@@ -323,14 +323,14 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[11px] font-mono text-slate-400 mb-1">
-                      MEMBERS (memeber)
+                      TEAM MEMBERS
                     </label>
                     <input
                       type="text"
                       value={membersList}
                       onChange={(e) => setMembersList(e.target.value)}
-                      placeholder="Member names"
-                      className={`w-full px-3 py-2 rounded-xl border text-xs sm:text-sm ${
+                      placeholder="Member 2, Member 3"
+                      className={`w-full px-3 py-2 rounded-lg border text-xs sm:text-sm ${
                         isDark
                           ? 'bg-[#0C1029] border-white/15 text-white'
                           : 'bg-white border-slate-300 text-slate-900'

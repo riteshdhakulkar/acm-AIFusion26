@@ -32,10 +32,10 @@ export const ChallengeDomains: React.FC<ChallengeDomainsProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Top Banner: Problem Statements Revealed on Event Day */}
         <div
-          className={`p-6 sm:p-8 rounded-3xl border flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 ${
+          className={`p-5 sm:p-7 rounded-xl border flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 ${
             isDark
-              ? 'bg-gradient-to-r from-[#140F38] via-[#0E1230] to-[#0B0E24] border-amber-400/50 shadow-xl shadow-violet-950/40'
-              : 'bg-amber-50/90 border-amber-400 shadow-md'
+              ? 'bg-[#0B0E22] border-amber-400/40'
+              : 'bg-amber-50/90 border-amber-400 shadow-sm'
           }`}
         >
           <div className="flex items-start gap-4">
@@ -140,11 +140,11 @@ export const ChallengeDomains: React.FC<ChallengeDomainsProps> = ({
                 <span>OFFICIAL AI POLICY</span>
               </div>
               <h3
-                className={`font-display text-xl sm:text-2xl font-extrabold ${
+                className={`font-display text-xl sm:text-2xl font-bold ${
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}
               >
-                AI IS ALLOWED 🚀
+                AI Tools Are Fully Permitted
               </h3>
               <p
                 className={`text-xs sm:text-sm leading-relaxed ${
