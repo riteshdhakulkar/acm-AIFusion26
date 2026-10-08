@@ -17,7 +17,6 @@ import {
   ActivityLogItem,
 } from './components/ParticipantDashboardModal';
 import { Footer } from './components/Footer';
-import { useOfficialPosterDataUrl } from './components/BrandLogos';
 import { OFFICIAL_POSTER_DATA_URL } from './assets/officialPosterData';
 import { CHALLENGE_DOMAINS, EVENT_CONFIG } from './data/eventData';
 import { X } from 'lucide-react';
@@ -27,18 +26,8 @@ export default function App() {
   const [posterPopupOpen, setPosterPopupOpen] = useState<boolean>(true);
   const [dashboardModalOpen, setDashboardModalOpen] = useState<boolean>(false);
   const [showWaPopup, setShowWaPopup] = useState<boolean>(true);
-  const fallbackPosterDataUrl = useOfficialPosterDataUrl();
 
-  const [exactPosterUrl] = useState<string>(() => {
-    if (OFFICIAL_POSTER_DATA_URL) return OFFICIAL_POSTER_DATA_URL;
-    try {
-      return localStorage.getItem('aifusion_exact_poster') || '';
-    } catch {
-      return '';
-    }
-  });
-
-  const activePosterUrl = exactPosterUrl || OFFICIAL_POSTER_DATA_URL || fallbackPosterDataUrl;
+  const activePosterUrl = OFFICIAL_POSTER_DATA_URL;
 
   const [selectedDomainId, setSelectedDomainId] = useState<string>(() => {
     try {
