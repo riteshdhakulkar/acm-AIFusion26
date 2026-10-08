@@ -668,13 +668,13 @@ export const FAQ_ITEMS: FAQItem[] = [
 
 export const FACULTY_ORGANIZERS: OrganizerPerson[] = [
   {
-    name: 'Mrs. Priyanka Padmane',
-    role: 'Event Co-Coordinator',
+    name: 'Dr. (Mrs.) R. A. Khan',
+    role: 'Event Coordinator',
     department: 'Department of Computer Technology',
   },
   {
-    name: 'Dr. (Mrs.) R. A. Khan',
-    role: 'Event Coordinator',
+    name: 'Mrs. Priyanka Padmane',
+    role: 'Event Co-Coordinator',
     department: 'Department of Computer Technology',
   },
   {
