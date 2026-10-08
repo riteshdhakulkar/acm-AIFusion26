@@ -53,7 +53,7 @@ export const ParticipantDashboardModal: React.FC<
   const [quickEmail, setQuickEmail] = useState(teamRecord?.leadEmail || '');
   const [quickMember, setQuickMember] = useState(teamRecord?.membersList || '');
   const [quickSize, setQuickSize] = useState<number>(teamRecord?.teamSize || 3);
-  const [coordinatorPhone, setCoordinatorPhone] = useState<string>('918552035048'); // Ritesh Dhakulkar
+  const [coordinatorPhone, setCoordinatorPhone] = useState<string>('917774860589'); // Prem Rahangdale
   const [portalError, setPortalError] = useState<string | null>(null);
 
   if (!isOpen) return null;

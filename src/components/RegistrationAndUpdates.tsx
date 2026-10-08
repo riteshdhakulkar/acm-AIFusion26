@@ -41,8 +41,10 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
   const [teamSize, setTeamSize] = useState<number>(3);
   const [formError, setFormError] = useState<string | null>(null);
   const [formSuccessUrl, setFormSuccessUrl] = useState<string | null>(null);
+  const [preparedMessage, setPreparedMessage] = useState<string | null>(null);
+  const [copiedMsg, setCopiedMsg] = useState<boolean>(false);
 
-  const handlePreRegisterSubmit = (e: React.FormEvent) => {
+  const handlePreRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError(null);
 
@@ -85,13 +87,21 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
       `• *memeber:* ${record.membersList} (${record.teamSize} Members · Fee: ₹${record.teamSize * 100})`,
     ].join('\n');
 
-    const whatsappUrl = `https://wa.me/918552035048?text=${encodeURIComponent(
+    setPreparedMessage(waMessage);
+    try {
+      await navigator.clipboard.writeText(waMessage);
+      setCopiedMsg(true);
+    } catch {
+      setCopiedMsg(false);
+    }
+
+    const whatsappGroupUrl = `${EVENT_CONFIG.whatsappGroupUrl}?text=${encodeURIComponent(
       waMessage
     )}`;
-    setFormSuccessUrl(whatsappUrl);
+    setFormSuccessUrl(whatsappGroupUrl);
 
     const link = document.createElement('a');
-    link.href = whatsappUrl;
+    link.href = whatsappGroupUrl;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     document.body.appendChild(link);
@@ -136,7 +146,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                   isDark ? 'text-slate-300' : 'text-slate-600'
                 }`}
               >
-                Form a 1–3 member team and register by 15 Oct 2026 to compete for the ₹10,000 prize pool.
+                Form a 1–3 member team and register by 20 Oct 2026 to compete for the ₹10,000 prize pool.
               </p>
 
               {/* Key Registration Details */}
@@ -176,7 +186,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                     DEADLINE
                   </span>
                   <p className="font-mono text-sm sm:text-base font-extrabold text-amber-400 mt-0.5">
-                    15 Oct 2026
+                    20 Oct 2026
                   </p>
                 </div>
               </div>
@@ -228,19 +238,35 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                 )}
 
                 {formSuccessUrl && (
-                  <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs flex items-center justify-between gap-2">
-                    <span className="flex items-center gap-1.5 font-bold">
-                      <CheckCircle2 className="w-4 h-4 shrink-0" />
-                      Sent to WhatsApp!
-                    </span>
-                    <a
-                      href={formSuccessUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline font-bold"
-                    >
-                      Re-open WhatsApp ↗
-                    </a>
+                  <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs space-y-1.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="flex items-center gap-1.5 font-bold">
+                        <CheckCircle2 className="w-4 h-4 shrink-0" />
+                        {copiedMsg
+                          ? 'Opening WhatsApp Group! Registration message copied — paste & send it in the group.'
+                          : 'Opening Official WhatsApp Group!'}
+                      </span>
+                      <a
+                        href={formSuccessUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline font-bold shrink-0"
+                      >
+                        Open Group ↗
+                      </a>
+                    </div>
+                    {preparedMessage && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          navigator.clipboard?.writeText(preparedMessage);
+                          setCopiedMsg(true);
+                        }}
+                        className="text-[11px] font-mono underline text-amber-300 hover:text-amber-200"
+                      >
+                        Copy registration message again
+                      </button>
+                    )}
                   </div>
                 )}
 

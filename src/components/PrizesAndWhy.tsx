@@ -145,8 +145,8 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5">
               <a
-                href={`https://wa.me/918552035048?text=${encodeURIComponent(
-                  'Hello AI-FUSION 2026 Team! We are interested in Sponsorship / Collaboration opportunities for National Level AI-FUSION 2026 at PCE Nagpur.'
+                href={`https://wa.me/919356802767?text=${encodeURIComponent(
+                  'Hello Tejas! We are interested in Sponsorship / Collaboration opportunities for National Level AI-FUSION 2026 at PCE Nagpur.'
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -155,6 +155,13 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
                 <MessageSquare className="w-4 h-4" />
                 <span>Sponsor / Collaborate on WhatsApp</span>
               </a>
+              <div
+                className={`text-center text-xs font-mono ${
+                  isDark ? 'text-slate-300' : 'text-slate-600'
+                }`}
+              >
+                Contact: <strong className={isDark ? 'text-white' : 'text-slate-900'}>Tejas Choudhary</strong> (+91 93568 02767)
+              </div>
             </div>
           </div>
         </div>

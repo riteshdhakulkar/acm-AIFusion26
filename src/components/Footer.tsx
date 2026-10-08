@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ isDark }) => {
               Join AI-FUSION 2026
             </h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              22 October 2026 · Computer Laboratory, IT Building, PCE Nagpur · Entry Fee: ₹100 / Member · Deadline: 15 October 2026.
+              22 October 2026 · Computer Laboratory, IT Building, PCE Nagpur · Entry Fee: ₹100 / Member · Deadline: 20 October 2026.
             </p>
             <a
               href={EVENT_CONFIG.registrationUrl}

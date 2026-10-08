@@ -83,7 +83,7 @@ export const EVENT_CONFIG = {
   chapters: ['PCE ACM Student Chapter', 'PCE ACM-W Student Chapter'],
   eventDate: '22 October 2026',
   eventDateISO: '2026-10-22T09:00:00+05:30',
-  registrationDeadline: '15 October 2026',
+  registrationDeadline: '20 October 2026',
   venue: 'Computer Laboratory, IT Building, Computer Technology Department, Priyadarshini College of Engineering, Nagpur',
   shortVenue: 'Computer Laboratory, IT Building · CT Department, PCE',
   format: 'Offline / On-site Event',
@@ -97,7 +97,7 @@ export const EVENT_CONFIG = {
   prizePoolNumeric: 10000,
   eligibility: 'Open to students from all colleges and all branches.',
   registrationUrl: 'https://forms.gle/ijX44sPpL7GuRHa4A',
-  whatsappGroupUrl: 'https://chat.whatsapp.com/FVuxUsU7ja7JTFrrKTY0Pk',
+  whatsappGroupUrl: 'https://chat.whatsapp.com/JMoSeGsnWok0s7BYi0m23K',
   acmGithubPlaceholder: '[OFFICIAL ACM GITHUB USERNAME WILL BE PROVIDED]',
   developerCredit: 'Ritesh Dhakulkar',
   GeneratedAssets: {
@@ -289,7 +289,7 @@ export const TIMELINE_STEPS: TimelineStep[] = [
   {
     step: 'STEP 01',
     title: 'Registration',
-    subtitle: 'By 15 Oct 2026',
+    subtitle: 'By 20 Oct 2026',
     description: 'Register solo or as a 1–3 member team (₹100/member).',
     badge: 'Pre-Event',
   },
@@ -696,12 +696,6 @@ export const FACULTY_ORGANIZERS: OrganizerPerson[] = [
 
 export const STUDENT_CONTACTS: StudentContact[] = [
   {
-    name: 'Ritesh Dhakulkar',
-    phone: '+91 85520 35048',
-    cleanPhone: '+918552035048',
-    role: 'Student Coordinator',
-  },
-  {
     name: 'Prem Rahangdale',
     phone: '+91 77748 60589',
     cleanPhone: '+917774860589',
@@ -723,6 +717,12 @@ export const STUDENT_CONTACTS: StudentContact[] = [
     name: 'Alisha Sheikh',
     phone: '+91 77961 17495',
     cleanPhone: '+917796117495',
+    role: 'Student Coordinator',
+  },
+  {
+    name: 'Ritesh Dhakulkar',
+    phone: '+91 85520 35048',
+    cleanPhone: '+918552035048',
     role: 'Student Coordinator',
   },
 ];

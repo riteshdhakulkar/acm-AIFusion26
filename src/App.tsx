@@ -17,13 +17,28 @@ import {
   ActivityLogItem,
 } from './components/ParticipantDashboardModal';
 import { Footer } from './components/Footer';
+import { useOfficialPosterDataUrl } from './components/BrandLogos';
+import { OFFICIAL_POSTER_DATA_URL } from './assets/officialPosterData';
 import { CHALLENGE_DOMAINS, EVENT_CONFIG } from './data/eventData';
 import { X } from 'lucide-react';
 
 export default function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
+  const [posterPopupOpen, setPosterPopupOpen] = useState<boolean>(true);
   const [dashboardModalOpen, setDashboardModalOpen] = useState<boolean>(false);
   const [showWaPopup, setShowWaPopup] = useState<boolean>(true);
+  const fallbackPosterDataUrl = useOfficialPosterDataUrl();
+
+  const [exactPosterUrl] = useState<string>(() => {
+    if (OFFICIAL_POSTER_DATA_URL) return OFFICIAL_POSTER_DATA_URL;
+    try {
+      return localStorage.getItem('aifusion_exact_poster') || '';
+    } catch {
+      return '';
+    }
+  });
+
+  const activePosterUrl = exactPosterUrl || OFFICIAL_POSTER_DATA_URL || fallbackPosterDataUrl;
 
   const [selectedDomainId, setSelectedDomainId] = useState<string>(() => {
     try {
@@ -202,6 +217,37 @@ export default function App() {
       </main>
 
       <Footer isDark={isDark} />
+
+      {/* Automatic Event Poster Popup on Website Open with One Cross Button */}
+      {posterPopupOpen && activePosterUrl && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Official AI-FUSION 2026 Poster"
+          className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
+          onClick={() => setPosterPopupOpen(false)}
+        >
+          <div
+            className="relative max-h-[92vh] max-w-[92vw] sm:max-w-lg w-auto flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setPosterPopupOpen(false)}
+              aria-label="Close poster popup"
+              className="absolute -top-3 -right-3 z-20 w-9 h-9 rounded-full bg-slate-950 border-2 border-white/80 text-white hover:bg-rose-600 hover:border-rose-300 shadow-xl flex items-center justify-center transition-transform hover:scale-105"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <img
+              src={activePosterUrl}
+              alt="Official Poster — National Level AI-FUSION 2026"
+              className="max-h-[88vh] w-auto rounded-xl border border-sky-400/50 shadow-2xl object-contain block select-none"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Global Small Floating WhatsApp Logo Button + Dismissible "Join the Group" Popup */}
       <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5">

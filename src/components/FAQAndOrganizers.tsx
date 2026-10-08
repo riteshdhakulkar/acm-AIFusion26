@@ -28,7 +28,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
   const [inqName, setInqName] = useState('');
   const [inqPhone, setInqPhone] = useState('');
   const [selectedCoordinatorPhone, setSelectedCoordinatorPhone] =
-    useState<string>('918552035048'); // Default: Ritesh Dhakulkar
+    useState<string>('917774860589'); // Default: Prem Rahangdale
   const [inqMessage, setInqMessage] = useState('');
   const [inqError, setInqError] = useState<string | null>(null);
   const [inqSubmitted, setInqSubmitted] = useState<{
@@ -37,6 +37,15 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
   } | null>(null);
 
   const essentialFaqs = FAQ_ITEMS.slice(0, 6);
+
+  // Order for Inquiry Dropdown: Prem, Kunjal, then all others (Tejas, Alisha, Ritesh)
+  const inquiryCoordinators = [
+    STUDENT_CONTACTS.find((c) => c.name.startsWith('Prem')),
+    STUDENT_CONTACTS.find((c) => c.name.startsWith('Kunjal')),
+    ...STUDENT_CONTACTS.filter(
+      (c) => !c.name.startsWith('Prem') && !c.name.startsWith('Kunjal')
+    ),
+  ].filter((c): c is (typeof STUDENT_CONTACTS)[number] => Boolean(c));
 
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -426,7 +435,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                         : 'bg-white border-slate-300 text-slate-900'
                     }`}
                   >
-                    {STUDENT_CONTACTS.map((c) => (
+                    {inquiryCoordinators.map((c) => (
                       <option
                         key={c.cleanPhone}
                         value={c.cleanPhone.replace('+', '')}

@@ -107,7 +107,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Institutional & ACM / ACM-W Chapter Lockup (ACM on Left, Institution Center, ACM-W on Exact Right) */}
         <div
-          className={`mb-8 px-5 py-4 sm:px-8 sm:py-5 rounded-2xl border backdrop-blur-md flex items-center justify-between gap-4 ${
+          className={`mb-6 sm:mb-8 px-2.5 py-2.5 sm:px-6 sm:py-4 rounded-2xl border backdrop-blur-md flex items-center justify-between gap-1.5 sm:gap-4 ${
             isDark
               ? 'bg-[#0C0E24]/85 border-violet-500/25'
               : 'bg-white/95 border-slate-200 shadow-sm'
@@ -115,47 +115,40 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
         >
           {/* Left Logo: PCE ACM Student Chapter */}
           <div className="shrink-0 flex items-center">
-            <PceAcmLogo className="w-14 h-14 sm:w-20 sm:h-20" />
+            <PceAcmLogo className="w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20" />
           </div>
 
-          {/* Center Institution & Chapter Titles */}
-          <div className="flex-1 text-center px-2 space-y-0.5">
+          {/* Center Institution & Chapter Titles (Exact 4 Single Lines) */}
+          <div className="flex-1 min-w-0 text-center px-1 space-y-0.5 leading-tight">
             <p
-              className={`text-[10px] font-medium tracking-wider ${
+              className={`text-[7.5px] sm:text-[11px] md:text-xs font-medium tracking-tight sm:tracking-wider whitespace-nowrap truncate ${
                 isDark ? 'text-amber-300/90' : 'text-amber-700'
               }`}
             >
-              {EVENT_CONFIG.societyName}
+              LOKMANYA TILAK JANKALYAN SHIKSHAN SANSTHA&apos;S
             </p>
             <p
-              className={`text-xs sm:text-base md:text-lg font-bold tracking-tight ${
+              className={`text-[8px] sm:text-sm md:text-lg font-extrabold tracking-tight whitespace-nowrap truncate ${
                 isDark ? 'text-white' : 'text-slate-900'
               }`}
             >
-              {EVENT_CONFIG.institution.toUpperCase()}
+              PRIYADARSHINI COLLEGE OF ENGINEERING, NAGPUR
+            </p>
+            <p className="text-[9px] sm:text-xs md:text-sm font-semibold text-sky-400 whitespace-nowrap truncate">
+              Department of Computer Technology
             </p>
             <p
-              className={`hidden md:block text-[10px] ${
-                isDark ? 'text-slate-400' : 'text-slate-500'
-              }`}
-            >
-              {EVENT_CONFIG.institutionSubtitle}
-            </p>
-            <p
-              className={`text-[11px] sm:text-xs pt-0.5 ${
+              className={`text-[8.5px] sm:text-xs font-medium whitespace-nowrap truncate ${
                 isDark ? 'text-slate-300' : 'text-slate-700'
               }`}
             >
-              <span className="font-semibold text-sky-400">
-                {EVENT_CONFIG.department}
-              </span>{' '}
-              · PCE ACM &amp; PCE ACM-W Student Chapters
+              PCE ACM &amp; PCE ACM-W Student Chapters
             </p>
           </div>
 
           {/* Exact Right Logo: PCE ACM-W Student Chapter */}
           <div className="shrink-0 flex items-center justify-end">
-            <PceAcmWLogo className="w-20 h-14 sm:w-28 sm:h-20" />
+            <PceAcmWLogo className="w-12 h-10 sm:w-24 sm:h-16 md:w-28 md:h-20" />
           </div>
         </div>
 
@@ -245,7 +238,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
             >
               <span className="inline-flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-amber-400" />
-                <span>Deadline: 15 Oct 2026</span>
+                <span>Deadline: 20 Oct 2026</span>
               </span>
               <span aria-hidden="true">·</span>
               <span>Entry: ₹100 / Member</span>
@@ -330,7 +323,7 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
 
               <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
                 <span className={isDark ? 'text-slate-300' : 'text-slate-600'}>
-                  Registration closes <strong className="text-amber-400">15 October 2026</strong>
+                  Registration closes <strong className="text-amber-400">20 October 2026</strong>
                 </span>
                 <a
                   href={EVENT_CONFIG.registrationUrl}

@@ -153,7 +153,7 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
                 isDark ? 'text-slate-400' : 'text-slate-600'
               }`}
             >
-              Deadline: <strong className="text-amber-400">15 Oct 2026</strong>
+              Deadline: <strong className="text-amber-400">20 Oct 2026</strong>
             </span>
           </div>
 
