@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import {
   X,
   User,
+  GitBranch,
+  Globe,
   CheckCircle2,
   Clock,
   ExternalLink,
   LogOut,
+  Sparkles,
   MessageSquare,
 } from 'lucide-react';
 import {
+  CHALLENGE_DOMAINS,
   SUBMISSION_CHECKLIST,
   EVENT_CONFIG,
   STUDENT_CONTACTS,
@@ -28,7 +32,7 @@ interface ParticipantDashboardModalProps {
   teamRecord: TeamRegistrationRecord | null;
   onUpdateTeamRecord: (record: TeamRegistrationRecord | null) => void;
   selectedDomainId: string;
-  onSelectDomain: (id: string) => void;
+  onSelectDomain: (domainId: string) => void;
   checkedSubmissionItems: string[];
   onToggleChecklistItem: (num: string) => void;
   activityLog: ActivityLogItem[];
@@ -42,440 +46,554 @@ export const ParticipantDashboardModal: React.FC<
   isDark,
   teamRecord,
   onUpdateTeamRecord,
-  selectedDomainId,
   checkedSubmissionItems,
   onToggleChecklistItem,
   activityLog,
 }) => {
-  const [quickTeam, setQuickTeam] = useState(teamRecord?.teamName || '');
-  const [quickName, setQuickName] = useState(teamRecord?.leadName || '');
-  const [quickMobile, setQuickMobile] = useState(teamRecord?.leadPhone || '');
-  const [quickEmail, setQuickEmail] = useState(teamRecord?.leadEmail || '');
-  const [quickMember, setQuickMember] = useState(teamRecord?.membersList || '');
-  const [quickSize, setQuickSize] = useState<number>(teamRecord?.teamSize || 3);
-  const [coordinatorPhone, setCoordinatorPhone] = useState<string>('917774860589'); // Prem Rahangdale
-  const [portalError, setPortalError] = useState<string | null>(null);
+  const [teamName, setTeamName] = useState(teamRecord?.teamName || '');
+  const [leadName, setLeadName] = useState(teamRecord?.leadName || '');
+  const [leadEmail, setLeadEmail] = useState(teamRecord?.leadEmail || '');
+  const [leadPhone, setLeadPhone] = useState(teamRecord?.leadPhone || '');
+  const [college, setCollege] = useState(
+    teamRecord?.college || 'Priyadarshini College of Engineering, Nagpur'
+  );
+  const [branchAndYear, setBranchAndYear] = useState(
+    teamRecord?.branchAndYear || 'Computer Technology · 3rd Year'
+  );
+  const [teamSize, setTeamSize] = useState<number>(teamRecord?.teamSize || 2);
+  const [preferredDomain, setPreferredDomain] = useState(
+    teamRecord?.preferredDomain || CHALLENGE_DOMAINS[0].title
+  );
+
+  // Submission Sandbox Links (saved in localStorage for event day readiness)
+  const [githubRepoUrl, setGithubRepoUrl] = useState(
+    () => localStorage.getItem('aifusion_repo_url') || ''
+  );
+  const [liveDeployUrl, setLiveDeployUrl] = useState(
+    () => localStorage.getItem('aifusion_deploy_url') || ''
+  );
+  const [selectedChallengeTrack, setSelectedChallengeTrack] = useState(
+    () => localStorage.getItem('aifusion_selected_track') || 'Track 01 (Event-Day Problem Statement)'
+  );
+  const [projectSummary, setProjectSummary] = useState(
+    () => localStorage.getItem('aifusion_summary') || ''
+  );
+  const [collaboratorAdded, setCollaboratorAdded] = useState(
+    () => localStorage.getItem('aifusion_collab') === 'true'
+  );
+  const [savedNotice, setSavedNotice] = useState(false);
 
   if (!isOpen) return null;
 
-  const buildWhatsAppUrl = (rec: TeamRegistrationRecord, phone: string) => {
-    const text = [
-      `*AI-FUSION 2026 — Team Portal Details*`,
-      `• *teamname:* ${rec.teamName}`,
-      `• *leadname:* ${rec.leadName}`,
-      `• *mobile:* ${rec.leadPhone}`,
-      `• *email:* ${rec.leadEmail}`,
-      `• *memeber:* ${rec.membersList} (${rec.teamSize} Member(s) · Fee: ₹${rec.teamSize * 100})`,
-    ].join('\n');
-    return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  const handleCreateProfile = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!teamName.trim() || !leadName.trim()) return;
+    onUpdateTeamRecord({
+      teamName: teamName.trim(),
+      leadName: leadName.trim(),
+      leadEmail: leadEmail.trim(),
+      leadPhone: leadPhone.trim(),
+      college: college.trim(),
+      branchAndYear: branchAndYear.trim(),
+      teamSize,
+      preferredDomain,
+      registeredAt: new Date().toLocaleString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
+    });
   };
 
-  const handleQuickSignIn = (e: React.FormEvent) => {
+  const handleSaveSubmissionDraft = (e: React.FormEvent) => {
     e.preventDefault();
-    setPortalError(null);
-    if (!quickTeam.trim() || !quickName.trim() || !quickMobile.trim() || !quickEmail.trim()) {
-      setPortalError('Please fill in teamname, leadname, mobile, and email.');
-      return;
-    }
+    localStorage.setItem('aifusion_repo_url', githubRepoUrl);
+    localStorage.setItem('aifusion_deploy_url', liveDeployUrl);
+    localStorage.setItem('aifusion_selected_track', selectedChallengeTrack);
+    localStorage.setItem('aifusion_summary', projectSummary);
+    localStorage.setItem('aifusion_collab', String(collaboratorAdded));
+    setSavedNotice(true);
+    setTimeout(() => setSavedNotice(false), 2500);
+  };
 
-    const newRecord: TeamRegistrationRecord = {
-      teamName: quickTeam.trim(),
-      leadName: quickName.trim(),
-      leadPhone: quickMobile.trim(),
-      leadEmail: quickEmail.trim(),
-      membersList: quickMember.trim() || `${quickSize} Member(s)`,
-      collegeName:
-        teamRecord?.collegeName ||
-        'Priyadarshini College of Engineering, Nagpur',
-      branch: teamRecord?.branch || 'Computer Technology',
-      teamSize: quickSize,
-      selectedDomainId,
-      registeredAt: new Date().toLocaleString('en-IN'),
-    };
+  const handleSendSubmissionViaWhatsApp = () => {
+    if (!teamRecord) return;
+    localStorage.setItem('aifusion_repo_url', githubRepoUrl);
+    localStorage.setItem('aifusion_deploy_url', liveDeployUrl);
+    localStorage.setItem('aifusion_selected_track', selectedChallengeTrack);
+    localStorage.setItem('aifusion_summary', projectSummary);
+    localStorage.setItem('aifusion_collab', String(collaboratorAdded));
 
-    onUpdateTeamRecord(newRecord);
+    const text =
+      `*AI-FUSION 2026 — PROJECT SUBMISSION*\n` +
+      `• *Team Name:* ${teamRecord.teamName}\n` +
+      `• *Team Lead:* ${teamRecord.leadName} (${teamRecord.leadPhone})\n` +
+      `• *College:* ${teamRecord.college}\n` +
+      `• *Selected Track:* ${selectedChallengeTrack}\n` +
+      `• *GitHub Repo:* ${githubRepoUrl || 'Pending'}\n` +
+      `• *Live Deployed URL:* ${liveDeployUrl || 'Pending'}\n` +
+      `• *ACM Collaborator Added:* ${collaboratorAdded ? 'Yes' : 'Pending'}\n` +
+      `• *Project Summary:* ${projectSummary || 'N/A'}`;
 
-    const waUrl = buildWhatsAppUrl(newRecord, coordinatorPhone);
-    const link = document.createElement('a');
-    link.href = waUrl;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const coordinatorPhone = STUDENT_CONTACTS[0].cleanPhone.replace(
+      /[^0-9]/g,
+      ''
+    );
+    const waUrl = `https://wa.me/${coordinatorPhone}?text=${encodeURIComponent(
+      text
+    )}`;
+    const a = document.createElement('a');
+    a.href = waUrl;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
     <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md overflow-y-auto"
       role="dialog"
       aria-modal="true"
-      aria-label="Participant Team Portal and Activity Dashboard"
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-      onClick={onClose}
+      aria-labelledby="portal-modal-title"
     >
       <div
-        className={`max-w-3xl w-full rounded-3xl border p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-6 ${
+        className={`relative w-full max-w-3xl rounded-3xl border p-6 sm:p-8 my-8 max-h-[90vh] overflow-y-auto ${
           isDark
-            ? 'bg-[#0B0E26] border-violet-500/40 text-slate-100'
-            : 'bg-white border-slate-200 text-slate-900'
+            ? 'bg-[#0B0F27] border-violet-500/40 text-slate-100 shadow-2xl shadow-black'
+            : 'bg-white border-slate-200 text-slate-900 shadow-2xl'
         }`}
-        onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-violet-600/20 border border-violet-400/40 flex items-center justify-center text-violet-300">
-              <User className="w-5 h-5" />
+        <div className="flex items-start justify-between gap-4 pb-5 border-b border-white/10">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>AI-FUSION 2026 · PARTICIPANT WORKSPACE</span>
             </div>
-            <div>
-              <span className="text-xs font-mono font-bold text-amber-400">
-                AI-FUSION 2026 TEAM PORTAL (WHATSAPP)
-              </span>
-              <h2 className="font-display text-xl sm:text-2xl font-extrabold">
-                {teamRecord
-                  ? `${teamRecord.teamName} — Team Portal`
-                  : 'Team Portal Registration (WhatsApp)'}
-              </h2>
-            </div>
+            <h2
+              id="portal-modal-title"
+              className="font-display text-xl sm:text-2xl font-extrabold mt-1"
+            >
+              {teamRecord
+                ? `Team Pass: ${teamRecord.teamName}`
+                : 'Participant Team Portal & Submission Readiness'}
+            </h2>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close portal"
-            className="p-2 rounded-lg border border-white/15 hover:bg-white/10"
+            aria-label="Close modal"
+            className={`p-2 rounded-xl border transition-colors ${
+              isDark
+                ? 'border-white/10 text-slate-400 hover:text-white hover:bg-white/5'
+                : 'border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Sign-in / Profile Creation or Active Profile Summary */}
         {!teamRecord ? (
-          <form
-            onSubmit={handleQuickSignIn}
-            noValidate
-            className={`p-5 rounded-2xl border space-y-4 ${
-              isDark
-                ? 'bg-[#070919] border-violet-500/30'
-                : 'bg-slate-50 border-slate-200'
-            }`}
-          >
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-400">
-              <MessageSquare className="w-4 h-4" />
-              <span>SUBMIT TEAM DETAILS DIRECTLY ON WHATSAPP</span>
-            </div>
-
-            {portalError && (
-              <div className="p-3 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-300 text-xs">
-                {portalError}
-              </div>
-            )}
+          /* Create Local Team Pass View */
+          <form onSubmit={handleCreateProfile} className="space-y-4 pt-6">
+            <p
+              className={`text-xs sm:text-sm ${
+                isDark ? 'text-slate-300' : 'text-slate-600'
+              }`}
+            >
+              Set up your local Team Workspace to track your 4-hour sprint
+              deliverables, GitHub repository link, and live deployment URL
+              before submitting to the judges.
+            </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
-                <label className="block text-xs font-mono text-slate-400 mb-1">
-                  TEAM NAME (teamname) *
+                <label className="block text-xs font-mono uppercase mb-1 text-amber-400">
+                  Team Name *
                 </label>
                 <input
                   type="text"
                   required
-                  value={quickTeam}
-                  onChange={(e) => setQuickTeam(e.target.value)}
-                  placeholder="Enter teamname"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
+                  value={teamName}
+                  onChange={(e) => setTeamName(e.target.value)}
+                  placeholder="e.g., Code Titans"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm ${
                     isDark
-                      ? 'bg-[#0C1029] border-white/15 text-white'
-                      : 'bg-white border-slate-300 text-slate-900'
+                      ? 'bg-[#07091A] border-white/15 text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-900'
                   }`}
                 />
               </div>
+
               <div>
-                <label className="block text-xs font-mono text-slate-400 mb-1">
-                  TEAM LEAD NAME (leadname) *
+                <label className="block text-xs font-mono uppercase mb-1 text-amber-400">
+                  Team Lead Name *
                 </label>
                 <input
                   type="text"
                   required
-                  value={quickName}
-                  onChange={(e) => setQuickName(e.target.value)}
-                  placeholder="Enter leadname"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
+                  value={leadName}
+                  onChange={(e) => setLeadName(e.target.value)}
+                  placeholder="Your Full Name"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm ${
                     isDark
-                      ? 'bg-[#0C1029] border-white/15 text-white'
-                      : 'bg-white border-slate-300 text-slate-900'
+                      ? 'bg-[#07091A] border-white/15 text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-900'
                   }`}
                 />
               </div>
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
-                <label className="block text-xs font-mono text-slate-400 mb-1">
-                  MOBILE NUMBER (mobile) *
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={quickMobile}
-                  onChange={(e) => setQuickMobile(e.target.value)}
-                  placeholder="+91 98765 43210"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
-                    isDark
-                      ? 'bg-[#0C1029] border-white/15 text-white'
-                      : 'bg-white border-slate-300 text-slate-900'
-                  }`}
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-mono text-slate-400 mb-1">
-                  EMAIL ADDRESS (email) *
+                <label className="block text-xs font-mono uppercase mb-1">
+                  Email Address
                 </label>
                 <input
                   type="email"
-                  required
-                  value={quickEmail}
-                  onChange={(e) => setQuickEmail(e.target.value)}
-                  placeholder="Enter email"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
+                  value={leadEmail}
+                  onChange={(e) => setLeadEmail(e.target.value)}
+                  placeholder="lead@college.edu"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm ${
                     isDark
-                      ? 'bg-[#0C1029] border-white/15 text-white'
-                      : 'bg-white border-slate-300 text-slate-900'
+                      ? 'bg-[#07091A] border-white/15 text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-900'
                   }`}
                 />
               </div>
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
-                <label className="block text-xs font-mono text-slate-400 mb-1">
-                  TEAM MEMBERS (memeber) *
+                <label className="block text-xs font-mono uppercase mb-1">
+                  WhatsApp Phone
+                </label>
+                <input
+                  type="tel"
+                  value={leadPhone}
+                  onChange={(e) => setLeadPhone(e.target.value)}
+                  placeholder="+91 98765 43210"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm ${
+                    isDark
+                      ? 'bg-[#07091A] border-white/15 text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-900'
+                  }`}
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono uppercase mb-1">
+                  College Name
                 </label>
                 <input
                   type="text"
-                  value={quickMember}
-                  onChange={(e) => setQuickMember(e.target.value)}
-                  placeholder="Member names (1–3 members)"
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-sm ${
+                  value={college}
+                  onChange={(e) => setCollege(e.target.value)}
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm ${
                     isDark
-                      ? 'bg-[#0C1029] border-white/15 text-white'
-                      : 'bg-white border-slate-300 text-slate-900'
+                      ? 'bg-[#07091A] border-white/15 text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-900'
                   }`}
                 />
               </div>
+
               <div>
-                <label className="block text-xs font-mono text-slate-400 mb-1">
-                  SEND WHATSAPP TO COORDINATOR
+                <label className="block text-xs font-mono uppercase mb-1">
+                  Team Size (1–3 Members)
                 </label>
                 <select
-                  value={coordinatorPhone}
-                  onChange={(e) => setCoordinatorPhone(e.target.value)}
-                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm font-medium ${
+                  value={teamSize}
+                  onChange={(e) => setTeamSize(Number(e.target.value))}
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm ${
                     isDark
-                      ? 'bg-[#0C1029] border-white/15 text-white'
-                      : 'bg-white border-slate-300 text-slate-900'
+                      ? 'bg-[#07091A] border-white/15 text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-900'
                   }`}
                 >
-                  {STUDENT_CONTACTS.map((c) => (
-                    <option
-                      key={c.cleanPhone}
-                      value={c.cleanPhone.replace('+', '')}
-                    >
-                      {c.name} ({c.phone})
-                    </option>
-                  ))}
+                  <option value={1}>1 Member (₹100)</option>
+                  <option value={2}>2 Members (₹200)</option>
+                  <option value={3}>3 Members (₹300)</option>
                 </select>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-              <div className="flex items-center gap-2 text-xs font-mono">
-                <span>Team Size:</span>
-                {[1, 2, 3].map((n) => (
-                  <button
-                    key={n}
-                    type="button"
-                    onClick={() => setQuickSize(n)}
-                    className={`px-2.5 py-1 rounded-lg border font-bold ${
-                      quickSize === n
-                        ? 'bg-violet-600 text-white border-violet-400'
-                        : 'border-white/15 text-slate-400'
-                    }`}
-                  >
-                    {n} (₹{n * 100})
-                  </button>
-                ))}
-              </div>
+            <input
+              type="hidden"
+              value={branchAndYear}
+              onChange={(e) => setBranchAndYear(e.target.value)}
+            />
+            <input
+              type="hidden"
+              value={preferredDomain}
+              onChange={(e) => setPreferredDomain(e.target.value)}
+            />
+
+            <div className="pt-3 flex flex-wrap items-center justify-between gap-3">
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 hover:bg-emerald-400 text-slate-950"
+                className="px-6 py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all"
               >
-                <MessageSquare className="w-4 h-4" />
-                <span>Save &amp; Send on WhatsApp</span>
+                Initialize Team Workspace
               </button>
-            </div>
-          </form>
-        ) : (
-          <div
-            className={`p-5 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
-              isDark
-                ? 'bg-[#070919] border-emerald-400/40'
-                : 'bg-emerald-50/70 border-emerald-300'
-            }`}
-          >
-            <div className="space-y-1 text-xs sm:text-sm font-mono">
-              <div className="text-xs font-bold text-emerald-400">
-                ACTIVE TEAM PORTAL · {teamRecord.teamSize} MEMBERS (FEE: ₹
-                {teamRecord.teamSize * 100})
-              </div>
-              <div>
-                <strong>teamname:</strong> {teamRecord.teamName} ·{' '}
-                <strong>leadname:</strong> {teamRecord.leadName}
-              </div>
-              <div>
-                <strong>mobile:</strong> {teamRecord.leadPhone} ·{' '}
-                <strong>email:</strong> {teamRecord.leadEmail}
-              </div>
-              <div>
-                <strong>memeber:</strong> {teamRecord.membersList}
-              </div>
-            </div>
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
-              <a
-                href={buildWhatsAppUrl(teamRecord, coordinatorPhone)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-500 text-slate-950"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>Send on WhatsApp</span>
-              </a>
+
               <a
                 href={EVENT_CONFIG.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold bg-amber-400 text-slate-950"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-sky-400 hover:underline"
               >
-                <span>Google Form</span>
+                <span>Open Official Google Form</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
-              <button
-                type="button"
-                onClick={() => onUpdateTeamRecord(null)}
-                className="inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold border border-rose-500/40 text-rose-300 hover:bg-rose-500/10"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-                <span>Edit / Reset</span>
-              </button>
             </div>
-          </div>
-        )}
-
-        {/* Dashboard Grid: Event-Day Problem Statements Notice & Submission Checklist Progress */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {/* Problem Statement Policy */}
-          <div
-            className={`p-5 rounded-2xl border space-y-3 ${
-              isDark
-                ? 'bg-[#070919] border-white/10'
-                : 'bg-slate-50 border-slate-200'
-            }`}
-          >
-            <span className="text-xs font-mono font-bold text-amber-400">
-              PROBLEM STATEMENTS POLICY
-            </span>
-            <h3 className="font-display text-lg font-bold">
-              Displayed Live on Event Day (22 October 2026)
-            </h3>
-            <p
-              className={`text-xs leading-relaxed ${
-                isDark ? 'text-slate-300' : 'text-slate-600'
+          </form>
+        ) : (
+          /* Active Team Pass & Event-Day Submission Readiness Tracker */
+          <div className="space-y-6 pt-6">
+            {/* Top Summary Banner */}
+            <div
+              className={`p-4 rounded-2xl border flex flex-wrap items-center justify-between gap-4 ${
+                isDark
+                  ? 'bg-[#07091A] border-white/10'
+                  : 'bg-slate-50 border-slate-200'
               }`}
             >
-              Problem statements will be displayed at the venue during the morning orientation. Teams will choose ANY ONE of the four revealed problem statements on the spot and get 4 hours of coding time with AI tools permitted.
-            </p>
-          </div>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4 text-amber-400" />
+                  <span className="font-display font-bold text-sm">
+                    Lead: {teamRecord.leadName}
+                  </span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-violet-500/20 text-violet-300">
+                    {teamRecord.teamSize}{' '}
+                    {teamRecord.teamSize === 1 ? 'Member' : 'Members'} · ₹
+                    {teamRecord.teamSize * 100}
+                  </span>
+                </div>
+                <div className="text-xs text-slate-400">
+                  {teamRecord.college} · Problem Statement: Revealed on Event Day
+                  (22 Oct 2026)
+                </div>
+              </div>
 
-          {/* Submission Checklist Progress */}
-          <div
-            className={`p-5 rounded-2xl border space-y-3 ${
-              isDark
-                ? 'bg-[#070919] border-white/10'
-                : 'bg-slate-50 border-slate-200'
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-amber-400">
-                SUBMISSION READINESS
-              </span>
-              <span className="text-xs font-mono font-bold text-emerald-400">
-                {checkedSubmissionItems.length}/5 Ready
-              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={EVENT_CONFIG.registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-400 text-slate-950"
+                >
+                  <span>Google Form</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => onUpdateTeamRecord(null)}
+                  className="inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-mono text-rose-400 border border-rose-500/30 hover:bg-rose-500/10"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Reset</span>
+                </button>
+              </div>
             </div>
-            <div className="space-y-2">
-              {SUBMISSION_CHECKLIST.map((item) => {
-                const done = checkedSubmissionItems.includes(item.number);
-                return (
-                  <button
-                    key={item.number}
-                    type="button"
-                    onClick={() => onToggleChecklistItem(item.number)}
-                    className={`w-full text-left px-3 py-2 rounded-xl border text-xs flex items-center justify-between ${
-                      done
-                        ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-300 font-semibold'
-                        : isDark
-                        ? 'bg-[#0C1029] border-white/10 text-slate-300'
-                        : 'bg-white border-slate-200 text-slate-700'
+
+            {/* Event-Day Submission Preparation Form */}
+            <form onSubmit={handleSaveSubmissionDraft} className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="font-display text-base font-extrabold flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-sky-400" />
+                  <span>4-Hour Sprint Submission Draft</span>
+                </h3>
+                <span className="text-[11px] font-mono text-slate-400">
+                  Auto-saved locally in browser
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                <div>
+                  <label className="block text-xs font-mono uppercase mb-1 flex items-center gap-1.5">
+                    <span>Event-Day Track</span>
+                  </label>
+                  <select
+                    value={selectedChallengeTrack}
+                    onChange={(e) => setSelectedChallengeTrack(e.target.value)}
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs ${
+                      isDark
+                        ? 'bg-[#07091A] border-white/15 text-white'
+                        : 'bg-slate-50 border-slate-300 text-slate-900'
                     }`}
                   >
-                    <span className="truncate">
-                      {item.number}. {item.title}
-                    </span>
-                    <CheckCircle2
-                      className={`w-4 h-4 shrink-0 ${
-                        done ? 'text-emerald-400' : 'opacity-30'
-                      }`}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+                    <option value="Track 01 (Event-Day Problem Statement)">
+                      Track 01 (Event-Day Reveal)
+                    </option>
+                    <option value="Track 02 (Event-Day Problem Statement)">
+                      Track 02 (Event-Day Reveal)
+                    </option>
+                    <option value="Track 03 (Event-Day Problem Statement)">
+                      Track 03 (Event-Day Reveal)
+                    </option>
+                    <option value="Track 04 (Event-Day Problem Statement)">
+                      Track 04 (Event-Day Reveal)
+                    </option>
+                  </select>
+                </div>
 
-        {/* Activity History Log */}
-        <div
-          className={`p-5 rounded-2xl border space-y-3 ${
-            isDark
-              ? 'bg-[#070919] border-white/10'
-              : 'bg-slate-50 border-slate-200'
-          }`}
-        >
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-violet-400">
-            <Clock className="w-4 h-4" />
-            <span>RECENT ACTIVITY HISTORY</span>
-          </div>
-          {activityLog.length === 0 ? (
-            <p className="text-xs text-slate-400">
-              No actions recorded yet.
-            </p>
-          ) : (
-            <ul className="space-y-1.5 max-h-36 overflow-y-auto text-xs font-mono">
-              {activityLog.map((entry) => (
-                <li
-                  key={entry.id}
-                  className="flex items-center justify-between gap-2 py-1 border-b border-white/5"
+                <div>
+                  <label className="block text-xs font-mono uppercase mb-1 flex items-center gap-1.5">
+                    <GitBranch className="w-3.5 h-3.5 text-violet-400" />
+                    <span>GitHub Repository URL</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={githubRepoUrl}
+                    onChange={(e) => setGithubRepoUrl(e.target.value)}
+                    placeholder="https://github.com/your-team/ai-fusion-app"
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs ${
+                      isDark
+                        ? 'bg-[#07091A] border-white/15 text-white'
+                        : 'bg-slate-50 border-slate-300 text-slate-900'
+                    }`}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono uppercase mb-1 flex items-center gap-1.5">
+                    <Globe className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Live Deployed Website URL</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={liveDeployUrl}
+                    onChange={(e) => setLiveDeployUrl(e.target.value)}
+                    placeholder="https://your-project.vercel.app"
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs ${
+                      isDark
+                        ? 'bg-[#07091A] border-white/15 text-white'
+                        : 'bg-slate-50 border-slate-300 text-slate-900'
+                    }`}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono uppercase mb-1">
+                  Short Project Summary &amp; AI Tools Used
+                </label>
+                <textarea
+                  rows={2}
+                  value={projectSummary}
+                  onChange={(e) => setProjectSummary(e.target.value)}
+                  placeholder="Describe the problem solved, tech stack, and how AI tools were utilized..."
+                  className={`w-full px-3.5 py-2 rounded-xl border text-xs ${
+                    isDark
+                      ? 'bg-[#07091A] border-white/15 text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-900'
+                  }`}
+                />
+              </div>
+
+              <label className="flex items-center gap-2.5 text-xs cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={collaboratorAdded}
+                  onChange={(e) => setCollaboratorAdded(e.target.checked)}
+                  className="rounded accent-amber-400 w-4 h-4"
+                />
+                <span>
+                  We have added{' '}
+                  <strong className="font-mono text-amber-400">
+                    {EVENT_CONFIG.acmGithubPlaceholder}
+                  </strong>{' '}
+                  as a GitHub repository collaborator.
+                </span>
+              </label>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-violet-600 hover:bg-violet-500 text-white transition-all"
                 >
-                  <span className={isDark ? 'text-slate-200' : 'text-slate-700'}>
-                    {entry.action}
+                  Save Submission Draft
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleSendSubmissionViaWhatsApp}
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 transition-all"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>Send Project Links via WhatsApp</span>
+                </button>
+
+                {savedNotice && (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Draft saved locally!</span>
                   </span>
-                  <span className="text-slate-400 shrink-0">
-                    {entry.timestamp}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+                )}
+              </div>
+            </form>
+
+            {/* Quick Checklist Reference */}
+            <div className="pt-4 border-t border-white/10">
+              <div className="text-xs font-mono uppercase text-slate-400 mb-2">
+                5 Mandatory Final Deliverables ({checkedSubmissionItems.length}/
+                {SUBMISSION_CHECKLIST.length} Checked):
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {SUBMISSION_CHECKLIST.map((item) => {
+                  const isDone = checkedSubmissionItems.includes(item.number);
+                  return (
+                    <button
+                      key={item.number}
+                      type="button"
+                      onClick={() => onToggleChecklistItem(item.number)}
+                      className={`p-2.5 rounded-xl border text-xs flex items-center gap-2 text-left transition-colors ${
+                        isDone
+                          ? isDark
+                            ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300'
+                            : 'bg-emerald-50 border-emerald-300 text-emerald-900'
+                          : isDark
+                          ? 'bg-[#07091A] border-white/10 text-slate-300'
+                          : 'bg-slate-50 border-slate-200 text-slate-700'
+                      }`}
+                    >
+                      <CheckCircle2
+                        className={`w-3.5 h-3.5 shrink-0 ${
+                          isDone ? 'text-emerald-400' : 'text-amber-400'
+                        }`}
+                      />
+                      <span className="font-semibold">{item.title}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {activityLog.length > 0 && (
+              <div className="pt-3 border-t border-white/10">
+                <div className="text-[11px] font-mono uppercase text-slate-400 mb-1.5">
+                  Recent Portal Activity:
+                </div>
+                <div className="space-y-1 max-h-24 overflow-y-auto text-[11px] font-mono text-slate-400">
+                  {activityLog.slice(0, 4).map((entry) => (
+                    <div
+                      key={entry.id}
+                      className="flex items-center justify-between gap-2"
+                    >
+                      <span className="truncate">{entry.action}</span>
+                      <span className="text-slate-500 shrink-0">
+                        {entry.timestamp}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

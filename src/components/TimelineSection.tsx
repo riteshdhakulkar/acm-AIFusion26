@@ -9,85 +9,108 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ isDark }) => {
   return (
     <section
       id="timeline"
-      className={`py-12 lg:py-16 border-t bg-circuit-grid ${
+      className={`py-14 lg:py-20 border-t ${
         isDark
-          ? 'bg-[#060714] border-violet-500/20'
-          : 'bg-slate-50 border-slate-200'
+          ? 'bg-[#060714] border-white/10'
+          : 'bg-slate-50 border-slate-200/80'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="text-xs font-mono font-semibold tracking-wider text-amber-400">
-              02. STEP-BY-STEP WORKFLOW
-            </div>
+            <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">
+              // 02 · COMPETITION WORKFLOW (9 STAGES)
+            </span>
             <h2
-              className={`font-display text-2xl sm:text-4xl font-extrabold tracking-tight mt-1 ${
-                isDark ? 'text-white' : 'text-slate-950'
+              className={`font-display text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 ${
+                isDark ? 'text-white' : 'text-slate-900'
               }`}
             >
-              How It Works
+              How the 6-Hour Event Works
             </h2>
           </div>
-          <p
-            className={`text-xs sm:text-sm font-mono ${
-              isDark ? 'text-slate-400' : 'text-slate-600'
+
+          <div
+            className={`inline-flex items-center gap-3 px-4 py-2 rounded-xl border text-xs font-mono ${
+              isDark
+                ? 'bg-[#0C1029] border-violet-500/30 text-slate-300'
+                : 'bg-white border-slate-200 text-slate-700'
             }`}
           >
-            6 Hours Total · <strong className="text-sky-400">4 Hours Coding</strong> · 9 Milestones
-          </p>
+            <span>
+              Total: <strong className="text-amber-400">6 Hours</strong>
+            </span>
+            <span>·</span>
+            <span>
+              Coding: <strong className="text-sky-400">4 Hours</strong>
+            </span>
+            <span>·</span>
+            <span>
+              Pitch: <strong className="text-emerald-400">4–5m + 2m Q&amp;A</strong>
+            </span>
+          </div>
         </div>
 
-        {/* Compact 9-Step Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {TIMELINE_STEPS.map((item) => {
-            const isBuildStep = item.step === 'STEP 05';
-
+        {/* Compact 3x3 Step Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          {TIMELINE_STEPS.map((step) => {
+            const isCodingSprint = step.step === 'STEP 05';
             return (
               <div
-                key={item.step}
-                className={`p-4 sm:p-5 rounded-2xl border ${
-                  isBuildStep
+                key={step.step}
+                className={`p-4 sm:p-5 rounded-2xl border transition-all flex flex-col justify-between ${
+                  isCodingSprint
                     ? isDark
-                      ? 'bg-gradient-to-br from-violet-950/80 via-[#0E1230] to-[#0B0E26] border-amber-400/70'
-                      : 'bg-amber-50/70 border-amber-400'
+                      ? 'bg-gradient-to-br from-amber-500/15 via-[#101538] to-[#0C1029] border-amber-400/50'
+                      : 'bg-amber-50/70 border-amber-300'
                     : isDark
-                    ? 'bg-[#0B0E24]/90 border-violet-500/20'
-                    : 'bg-white border-slate-200'
+                    ? 'bg-[#0C1029]/90 border-white/10 hover:border-violet-500/40'
+                    : 'bg-white border-slate-200 hover:border-violet-300'
                 }`}
               >
-                <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <span
-                    className={`font-mono text-xs font-extrabold ${
-                      isBuildStep ? 'text-amber-400' : 'text-sky-400'
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span
+                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider ${
+                        isCodingSprint
+                          ? 'bg-amber-400 text-slate-950'
+                          : isDark
+                          ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
+                          : 'bg-violet-100 text-violet-800'
+                      }`}
+                    >
+                      {step.step}
+                    </span>
+                    <span
+                      className={`text-[11px] font-mono font-semibold ${
+                        isCodingSprint
+                          ? 'text-amber-400'
+                          : isDark
+                          ? 'text-sky-400'
+                          : 'text-sky-700'
+                      }`}
+                    >
+                      {step.subtitle}
+                    </span>
+                  </div>
+
+                  <h3
+                    className={`font-display text-base sm:text-lg font-extrabold ${
+                      isDark ? 'text-white' : 'text-slate-900'
                     }`}
                   >
-                    {item.step}
-                  </span>
-                  <span
-                    className={`font-mono text-[11px] ${
-                      isDark ? 'text-slate-400' : 'text-slate-500'
+                    {step.title}
+                  </h3>
+
+                  <p
+                    className={`text-xs sm:text-sm mt-1 leading-relaxed ${
+                      isDark ? 'text-slate-300' : 'text-slate-600'
                     }`}
                   >
-                    {item.badge}
-                  </span>
+                    {step.description}
+                  </p>
                 </div>
-
-                <h3
-                  className={`font-display text-base sm:text-lg font-extrabold ${
-                    isDark ? 'text-white' : 'text-slate-900'
-                  }`}
-                >
-                  {item.title}
-                </h3>
-
-                <p
-                  className={`text-xs leading-relaxed mt-1 ${
-                    isDark ? 'text-slate-300' : 'text-slate-600'
-                  }`}
-                >
-                  {item.description}
-                </p>
               </div>
             );
           })}

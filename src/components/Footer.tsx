@@ -10,10 +10,12 @@ interface FooterProps {
 const QUICK_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Challenges', href: '#challenges' },
   { label: 'Timeline', href: '#timeline' },
+  { label: 'Challenges', href: '#challenges' },
   { label: 'Submission', href: '#submission' },
   { label: 'Judging', href: '#judging' },
+  { label: 'Prizes', href: '#prizes' },
+  { label: 'Register', href: '#register' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -21,89 +23,105 @@ const QUICK_LINKS = [
 export const Footer: React.FC<FooterProps> = ({ isDark }) => {
   return (
     <footer
-      className={`border-t pt-16 pb-12 ${
+      className={`border-t py-12 ${
         isDark
-          ? 'bg-[#040510] border-violet-500/20 text-slate-300'
-          : 'bg-slate-950 border-slate-800 text-slate-300'
+          ? 'bg-[#04050F] border-white/10 text-slate-400'
+          : 'bg-slate-900 border-slate-800 text-slate-300'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
-          {/* Column 1: Event Identity & Chapters (6 cols) */}
-          <div className="lg:col-span-6 space-y-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          {/* Brand & Institution Info */}
+          <div className="md:col-span-6 space-y-3">
             <div className="flex items-center gap-3">
-              <PceAcmLogo className="w-12 h-12 shrink-0" />
-              <PceAcmWLogo className="w-16 h-12 shrink-0" />
+              <PceAcmLogo className="w-11 h-11" />
+              <PceAcmWLogo className="w-14 h-11" />
+              <div>
+                <div className="font-display text-lg font-extrabold text-white tracking-tight">
+                  NATIONAL LEVEL AI-FUSION 2026
+                </div>
+                <div className="text-xs font-mono text-amber-400">
+                  BUILD WITH AI — “Turn Your Ideas Into Impact”
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-poster-gold tracking-tight">
-                {EVENT_CONFIG.name}
-              </h2>
-              <p className="font-display text-base font-bold text-white mt-0.5">
-                {EVENT_CONFIG.tagline} — “{EVENT_CONFIG.secondaryTagline}”
+            <div className="space-y-1 pt-1">
+              <p className="text-[11px] font-mono uppercase tracking-wider text-amber-300/90 font-semibold">
+                {EVENT_CONFIG.societyName}
               </p>
-            </div>
-
-            <div className="text-xs sm:text-sm text-slate-400 space-y-1 leading-relaxed">
-              <p className="font-semibold text-slate-200">
-                PCE ACM Student Chapter &amp; PCE ACM-W Student Chapter
+              <p className="text-xs sm:text-sm font-bold text-white">
+                {EVENT_CONFIG.institution}
               </p>
-              <p>{EVENT_CONFIG.department}</p>
-              <p>{EVENT_CONFIG.institution}</p>
+              <p className="text-[11px] text-slate-400">
+                {EVENT_CONFIG.institutionSubtitle}
+              </p>
+              <p className="text-xs text-slate-300 pt-1">
+                Organized by{' '}
+                <strong className="text-white">
+                  {EVENT_CONFIG.department}
+                </strong>{' '}
+                ·{' '}
+                <span className="text-sky-400">PCE ACM Student Chapter</span> &amp;{' '}
+                <span className="text-violet-400">
+                  PCE ACM-W Student Chapter
+                </span>
+              </p>
             </div>
           </div>
 
-          {/* Column 2: Quick Links (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-amber-400">
-              Quick Links
-            </h3>
-            <ul className="grid grid-cols-2 gap-2 text-sm">
+          {/* Quick Jump Links */}
+          <div className="md:col-span-4 space-y-2.5">
+            <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
+              Quick Navigation
+            </div>
+            <div className="grid grid-cols-2 gap-1.5 text-xs">
               {QUICK_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-slate-300 hover:text-amber-400 transition-colors py-0.5"
+                >
+                  {link.label}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Column 3: Registration CTA (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400">
-              Join AI-FUSION 2026
-            </h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              22 October 2026 · Computer Laboratory, IT Building, PCE Nagpur · Entry Fee: ₹100 / Member · Deadline: 20 October 2026.
-            </p>
+          {/* Primary Registration Link */}
+          <div className="md:col-span-2 space-y-3">
+            <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
+              Registration
+            </div>
             <a
               href={EVENT_CONFIG.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl text-xs sm:text-sm font-extrabold bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-lg shadow-amber-500/20 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all"
             >
-              <span>REGISTER NOW</span>
-              <ExternalLink className="w-4 h-4" />
+              <span>Register Now</span>
+              <ExternalLink className="w-3.5 h-3.5" />
             </a>
+            <div className="text-[11px] font-mono text-slate-400">
+              22 Oct 2026 · ₹100 / Member
+            </div>
           </div>
         </div>
 
-        {/* Bottom Copyright & Subtle Developer Credit */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 PCE ACM &amp; ACM-W Student Chapter. All rights reserved.</p>
+        {/* Bottom Copyright & Developer Attribution */}
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+          <div>
+            © 2026 Department of Computer Technology, PCE Nagpur · PCE ACM &amp;
+            ACM-W Student Chapters.
+          </div>
 
-          <p className="inline-flex items-center gap-1.5 text-slate-400">
-            <Code className="w-3.5 h-3.5 text-violet-400" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px]">
+            <Code className="w-3.5 h-3.5 text-amber-400" />
             <span>Designed &amp; Developed by</span>
-            <span className="font-semibold text-slate-200">
+            <strong className="text-amber-300 font-bold">
               {EVENT_CONFIG.developerCredit}
-            </span>
-          </p>
+            </strong>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-  CalendarClock,
+  Lock,
+  Sparkles,
+  CheckCircle2,
+  Calendar,
   Cpu,
-  Check,
-  Layers,
+  Code2,
   ExternalLink,
 } from 'lucide-react';
 import {
@@ -23,162 +25,227 @@ export const ChallengeDomains: React.FC<ChallengeDomainsProps> = ({
   return (
     <section
       id="challenges"
-      className={`py-12 lg:py-16 border-t ${
+      className={`py-14 lg:py-20 border-t ${
         isDark
-          ? 'bg-[#080A1E] border-violet-500/20'
-          : 'bg-white border-slate-200'
+          ? 'bg-[#080B1E] border-white/10'
+          : 'bg-white border-slate-200/80'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Top Banner: Problem Statements Revealed on Event Day */}
-        <div
-          className={`p-5 sm:p-7 rounded-xl border flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 ${
-            isDark
-              ? 'bg-[#0B0E22] border-amber-400/40'
-              : 'bg-amber-50/90 border-amber-400 shadow-sm'
-          }`}
-        >
-          <div className="flex items-start gap-4">
-            <div className="p-3.5 rounded-2xl bg-amber-400/20 border border-amber-400/40 text-amber-400 shrink-0 mt-0.5">
-              <CalendarClock className="w-7 h-7" />
-            </div>
-            <div className="space-y-1">
-              <div className="text-[11px] font-mono font-semibold text-amber-400">
-                03. PROBLEM STATEMENTS · LIVE REVEAL
-              </div>
-              <h2
-                className={`font-display text-xl sm:text-2xl font-bold ${
-                  isDark ? 'text-white' : 'text-slate-900'
-                }`}
-              >
-                Problem Statements Displayed on Event Day (22 Oct 2026)
-              </h2>
-              <p
-                className={`text-xs leading-relaxed max-w-2xl ${
-                  isDark ? 'text-slate-300' : 'text-slate-700'
-                }`}
-              >
-                4 problem statements will be revealed on-site during orientation. Teams choose{' '}
-                <strong className="text-amber-400">ANY ONE</strong> to build in 4 hours.
-              </p>
-            </div>
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">
+              // 03 · CHALLENGE PROBLEM STATEMENTS &amp; BUILD RULES
+            </span>
+            <h2
+              className={`font-display text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 ${
+                isDark ? 'text-white' : 'text-slate-900'
+              }`}
+            >
+              Problem Statements &amp; AI Tool Guidelines
+            </h2>
           </div>
 
           <a
             href={EVENT_CONFIG.registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-extrabold bg-amber-400 hover:bg-amber-300 text-slate-950 whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all self-start md:self-auto"
           >
-            <span>REGISTER NOW</span>
-            <ExternalLink className="w-4 h-4" />
+            <span>Register Your Team</span>
+            <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
 
-        {/* Compact 2-Column Grid: What You Build + AI Tools Allowed */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Left: What You Build & Tech Stack Freedom */}
-          <div
-            className={`lg:col-span-6 p-6 sm:p-7 rounded-2xl border flex flex-col justify-between space-y-5 ${
-              isDark
-                ? 'bg-[#0C0F26] border-violet-500/25'
-                : 'bg-slate-50 border-slate-200'
-            }`}
-          >
-            <div className="space-y-3">
-              <span className="text-xs font-mono font-bold text-sky-400">
-                WHAT YOU ARE EXPECTED TO BUILD
-              </span>
+        {/* Official Event-Day Reveal Banner */}
+        <div
+          className={`p-6 sm:p-8 rounded-2xl border-l-4 border-l-amber-400 border ${
+            isDark
+              ? 'bg-gradient-to-r from-amber-500/10 via-[#0C1029] to-[#0C1029] border-white/10'
+              : 'bg-amber-50/70 border-slate-200'
+          }`}
+        >
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-2.5 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                <Lock className="w-3.5 h-3.5 text-amber-400" />
+                <span>On-Site Reveal Only · No Pre-Revealed Domains</span>
+              </div>
+
               <h3
                 className={`font-display text-xl sm:text-2xl font-extrabold ${
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}
               >
-                Functional AI-Powered Website / Web App
+                Problem Statements Will Be Displayed Live on the Event Day
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                {WHAT_TO_BUILD_REQUIREMENTS.map((req) => (
-                  <div
-                    key={req}
-                    className="flex items-center gap-2 text-xs sm:text-sm font-medium"
-                  >
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span className={isDark ? 'text-slate-200' : 'text-slate-700'}>
-                      {req}
-                    </span>
-                  </div>
-                ))}
-              </div>
+
+              <p
+                className={`text-sm sm:text-base leading-relaxed ${
+                  isDark ? 'text-slate-300' : 'text-slate-700'
+                }`}
+              >
+                To ensure a fair and exciting 4-hour sprint for every team,
+                domains and problem statements are{' '}
+                <strong className="text-amber-400">
+                  not disclosed in advance
+                </strong>
+                . Official problem statements will be displayed on-site on{' '}
+                <strong className={isDark ? 'text-white' : 'text-slate-900'}>
+                  22 October 2026
+                </strong>{' '}
+                during the morning briefing, and each team will choose{' '}
+                <strong className="text-sky-400">any ONE</strong> problem
+                statement to build and deploy.
+              </p>
             </div>
 
             <div
-              className={`pt-4 border-t text-xs ${
-                isDark ? 'border-white/10 text-slate-300' : 'border-slate-200 text-slate-600'
+              className={`p-4 sm:p-5 rounded-xl border shrink-0 lg:w-72 space-y-2 ${
+                isDark
+                  ? 'bg-[#070A1C] border-white/10'
+                  : 'bg-white border-slate-200'
               }`}
             >
-              <div className="flex items-center gap-1.5 font-mono font-bold text-amber-400 mb-1.5">
-                <Layers className="w-3.5 h-3.5" />
-                <span>ANY WEB TECH STACK ALLOWED:</span>
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-sky-400">
+                <Calendar className="w-4 h-4 text-amber-400" />
+                <span>EVENT-DAY FORMAT</span>
               </div>
-              <p className="font-mono text-xs text-sky-400">
-                {PERMITTED_TECH_STACKS.join(' · ')}
-              </p>
+              <ul
+                className={`text-xs space-y-1.5 ${
+                  isDark ? 'text-slate-300' : 'text-slate-600'
+                }`}
+              >
+                <li>• Multiple tracks revealed at 09:30 AM</li>
+                <li>• Select 1 problem statement with your team</li>
+                <li>• 4 Hours of hands-on AI-assisted coding</li>
+                <li>• Deploy live URL + push to GitHub</li>
+              </ul>
             </div>
           </div>
+        </div>
 
-          {/* Right: AI IS ALLOWED 🚀 */}
+        {/* Compact 2-Column Build & AI Guidelines */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Column 1: What Teams Need to Build + Tech Stack */}
           <div
-            className={`lg:col-span-6 p-6 sm:p-7 rounded-2xl border flex flex-col justify-between space-y-5 ${
+            className={`p-5 sm:p-6 rounded-2xl border space-y-5 ${
               isDark
-                ? 'bg-gradient-to-br from-[#120E36] to-[#0C0F28] border-violet-400/40'
-                : 'bg-violet-50/70 border-violet-300'
+                ? 'bg-[#0C1029] border-white/10'
+                : 'bg-slate-50 border-slate-200'
             }`}
           >
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-amber-400">
-                <Cpu className="w-4 h-4" />
-                <span>OFFICIAL AI POLICY</span>
-              </div>
+            <div className="flex items-center gap-2.5">
+              <Code2 className="w-5 h-5 text-sky-400 shrink-0" />
               <h3
-                className={`font-display text-xl sm:text-2xl font-bold ${
+                className={`font-display text-lg font-extrabold ${
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}
               >
-                AI Tools Are Fully Permitted
+                What Participants Need to Build
               </h3>
-              <p
-                className={`text-xs sm:text-sm leading-relaxed ${
-                  isDark ? 'text-slate-200' : 'text-slate-700'
-                }`}
-              >
-                Participants are free to use AI tools for brainstorming, research, UI/code generation, debugging, and documentation:
-              </p>
+            </div>
 
-              <div className="flex flex-wrap gap-2 pt-1">
-                {AI_TOOL_EXAMPLES.map((tool) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {WHAT_TO_BUILD_REQUIREMENTS.map((req) => (
+                <div
+                  key={req}
+                  className={`p-3 rounded-xl border flex items-center gap-2 text-xs font-medium ${
+                    isDark
+                      ? 'bg-[#07091A] border-white/10 text-slate-200'
+                      : 'bg-white border-slate-200 text-slate-700'
+                  }`}
+                >
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>{req}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-2 border-t border-white/10">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-semibold mb-2">
+                Permitted Web / App Tech Stacks (Any Modern Stack)
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {PERMITTED_TECH_STACKS.map((stack) => (
                   <span
-                    key={tool}
-                    className={`px-3 py-1.5 rounded-lg border font-mono text-xs font-semibold ${
+                    key={stack}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-mono border ${
                       isDark
-                        ? 'bg-[#070919] border-white/10 text-emerald-300'
-                        : 'bg-white border-slate-200 text-slate-800'
+                        ? 'bg-[#07091A] border-white/10 text-slate-300'
+                        : 'bg-white border-slate-200 text-slate-700'
                     }`}
                   >
-                    ✓ {tool}
+                    {stack}
                   </span>
                 ))}
               </div>
             </div>
+          </div>
 
-            <div
-              className={`p-4 rounded-xl border-l-4 border-amber-400 ${
-                isDark
-                  ? 'bg-amber-400/10 text-white'
-                  : 'bg-amber-50 text-slate-900'
+          {/* Column 2: AI Tools Policy */}
+          <div
+            className={`p-5 sm:p-6 rounded-2xl border space-y-5 ${
+              isDark
+                ? 'bg-[#0C1029] border-violet-500/30'
+                : 'bg-slate-50 border-slate-200'
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2.5">
+                <Cpu className="w-5 h-5 text-amber-400 shrink-0" />
+                <h3
+                  className={`font-display text-lg font-extrabold ${
+                    isDark ? 'text-white' : 'text-slate-900'
+                  }`}
+                >
+                  AI Tool Usage Guidelines
+                </h3>
+              </div>
+              <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                100% Permitted
+              </span>
+            </div>
+
+            <p
+              className={`text-xs sm:text-sm leading-relaxed ${
+                isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              <p className="font-display text-sm sm:text-base font-extrabold text-amber-400">
-                “AI can help you build it. You must be able to explain it.”
+              Participants are encouraged to use AI tools for ideation, UI
+              generation, coding, and debugging:
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {AI_TOOL_EXAMPLES.map((tool) => (
+                <span
+                  key={tool}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold border ${
+                    isDark
+                      ? 'bg-[#07091A] border-violet-500/30 text-violet-200'
+                      : 'bg-white border-violet-200 text-violet-900'
+                  }`}
+                >
+                  <Sparkles className="w-3 h-3 text-amber-400" />
+                  <span>{tool}</span>
+                </span>
+              ))}
+            </div>
+
+            <div
+              className={`p-4 rounded-xl border-l-4 border-l-amber-400 border ${
+                isDark
+                  ? 'bg-amber-500/10 border-white/10 text-slate-200'
+                  : 'bg-amber-50 border-amber-200 text-slate-800'
+              }`}
+            >
+              <div className="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold mb-1">
+                Mandatory Rule
+              </div>
+              <p className="text-xs sm:text-sm font-semibold leading-snug">
+                “Participants must understand and explain their code,
+                architecture, and project flow during judging.”
               </p>
             </div>
           </div>

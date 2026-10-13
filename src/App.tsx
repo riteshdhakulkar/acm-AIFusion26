@@ -20,6 +20,7 @@ import { Footer } from './components/Footer';
 import { OFFICIAL_POSTER_DATA_URL } from './assets/officialPosterData';
 import { CHALLENGE_DOMAINS, EVENT_CONFIG } from './data/eventData';
 import { X } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -164,6 +165,7 @@ export default function App() {
           : 'bg-slate-50 text-slate-900'
       }`}
     >
+      <Analytics />
       <Navbar
         isDark={isDark}
         onToggleTheme={() => {
