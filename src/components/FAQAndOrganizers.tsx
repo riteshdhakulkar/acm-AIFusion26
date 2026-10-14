@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   Building2,
   MessageSquare,
+  ExternalLink,
 } from 'lucide-react';
 import {
   FAQ_ITEMS,
@@ -359,8 +360,8 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                     : 'bg-slate-50 border-slate-200'
                 }`}
               >
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
-                  <div className="sm:col-span-7 space-y-2.5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                  <div className="space-y-1">
                     <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
                       <MapPin className="w-3.5 h-3.5" />
                       <span>ON-SITE COMPETITION VENUE</span>
@@ -372,6 +373,21 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                     >
                       Computer Laboratory, IT Building
                     </h4>
+                  </div>
+
+                  <a
+                    href={EVENT_CONFIG.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-amber-400 hover:bg-amber-300 text-slate-950 transition-colors shrink-0 self-start sm:self-auto shadow-sm"
+                  >
+                    <span>Open in Google Maps</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center mb-4">
+                  <div className="sm:col-span-8 space-y-2">
                     <p
                       className={`text-xs sm:text-sm leading-relaxed ${
                         isDark ? 'text-slate-300' : 'text-slate-600'
@@ -381,9 +397,9 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                       of Engineering, Hingna Road, Digdoh Hills, Nagpur,
                       Maharashtra — 440019
                     </p>
-                    <div className="pt-2 flex items-center gap-3">
-                      <PceAcmLogo className="w-9 h-9" />
-                      <PceAcmWLogo className="w-11 h-9" />
+                    <div className="pt-1 flex items-center gap-3">
+                      <PceAcmLogo className="w-8 h-8" />
+                      <PceAcmWLogo className="w-10 h-8" />
                       <span
                         className={`text-xs font-mono ${
                           isDark ? 'text-slate-400' : 'text-slate-600'
@@ -394,8 +410,8 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                     </div>
                   </div>
 
-                  <div className="sm:col-span-5">
-                    <div className="rounded-xl overflow-hidden border border-white/10 h-40 relative">
+                  <div className="sm:col-span-4">
+                    <div className="rounded-xl overflow-hidden border border-white/10 h-24 sm:h-28 relative">
                       <img
                         src={EVENT_CONFIG.GeneratedAssets.campusLab}
                         alt="Computer Laboratory, IT Building at PCE Nagpur"
@@ -406,14 +422,29 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                             'none';
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#060714]/80 via-transparent to-transparent flex items-end p-3">
-                        <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-white font-semibold">
-                          <Building2 className="w-3.5 h-3.5 text-amber-400" />
-                          <span>IT Building · CT Dept, PCE</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#060714]/80 via-transparent to-transparent flex items-end p-2">
+                        <span className="inline-flex items-center gap-1 text-[10px] font-mono text-white font-semibold">
+                          <Building2 className="w-3 h-3 text-amber-400" />
+                          <span>IT Building · CT Dept</span>
                         </span>
                       </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Exact Google Maps Interactive Embed */}
+                <div className="rounded-xl overflow-hidden border border-white/15 h-64 sm:h-72 w-full relative shadow-inner">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.239305832655!2d79.00159627503362!3d21.103023480564886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4955ae1d75a6d%3A0x639a1ab160553db3!2sPriyadarshini%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1791989419109!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title="Priyadarshini College of Engineering Google Map"
+                    className="w-full h-full border-0 block"
+                  />
                 </div>
               </div>
 

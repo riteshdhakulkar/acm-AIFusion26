@@ -98,6 +98,10 @@ export const EVENT_CONFIG = {
   eligibility: 'Open to students from all colleges and all branches.',
   registrationUrl: 'https://forms.gle/ijX44sPpL7GuRHa4A',
   whatsappGroupUrl: 'https://chat.whatsapp.com/JMoSeGsnWok0s7BYi0m23K',
+  googleMapsEmbedUrl:
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.239305832655!2d79.00159627503362!3d21.103023480564886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4955ae1d75a6d%3A0x639a1ab160553db3!2sPriyadarshini%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1791989419109!5m2!1sen!2sin',
+  googleMapsUrl:
+    'https://maps.google.com/?q=Priyadarshini+College+of+Engineering+Nagpur',
   acmGithubPlaceholder: '[OFFICIAL ACM GITHUB USERNAME WILL BE PROVIDED]',
   developerCredit: 'Ritesh Dhakulkar',
   GeneratedAssets: {
