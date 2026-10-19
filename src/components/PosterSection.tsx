@@ -31,7 +31,7 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
       id="poster"
       className={`py-12 lg:py-16 border-t ${
         isDark
-          ? 'bg-[#080B20] border-violet-500/20'
+          ? 'bg-[#0B0F19] border-slate-800'
           : 'bg-white border-slate-200'
       }`}
     >
@@ -62,7 +62,7 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
             <div
               className={`p-5 rounded-2xl border space-y-2 text-xs sm:text-sm ${
                 isDark
-                  ? 'bg-[#0C0F26] border-violet-500/30 text-slate-300'
+                  ? 'bg-[#0F172A] border-slate-800 text-slate-300'
                   : 'bg-slate-50 border-slate-200 text-slate-700'
               }`}
             >
@@ -91,8 +91,8 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
                 onClick={onOpenModal}
                 className={`inline-flex items-center gap-2 px-6 py-4 rounded-xl text-sm font-extrabold border transition-colors whitespace-nowrap ${
                   isDark
-                    ? 'border-violet-400/50 bg-violet-950/60 text-white hover:bg-violet-900/70'
-                    : 'border-violet-300 bg-violet-50 text-violet-950 hover:bg-violet-100'
+                    ? 'border-slate-700 bg-slate-800/80 text-white hover:bg-slate-700/80'
+                    : 'border-slate-300 bg-slate-100 text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 <Maximize2 className="w-4 h-4 text-sky-400" />
@@ -131,7 +131,7 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
             <div
               className={`p-3 sm:p-5 rounded-3xl border backdrop-blur-xl max-w-md w-full transition-transform duration-200 hover:scale-[1.01] ${
                 isDark
-                  ? 'bg-white/[0.04] border-violet-400/40 shadow-2xl shadow-violet-950/60'
+                  ? 'bg-slate-900/90 border-slate-800 shadow-xl'
                   : 'bg-slate-100/80 border-slate-300 shadow-xl'
               }`}
             >
@@ -155,7 +155,7 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
                     className="w-full h-auto block select-none"
                   />
                 ) : (
-                  <div className="aspect-[1080/1520] w-full flex items-center justify-center text-sm font-mono text-violet-300">
+                  <div className="aspect-[1080/1520] w-full flex items-center justify-center text-sm font-mono text-sky-300">
                     Rendering Official Poster...
                   </div>
                 )}
@@ -183,7 +183,7 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
         >
           {/* Top Lightbox Controls */}
           <div
-            className="px-4 sm:px-8 py-4 border-b border-white/10 flex items-center justify-between bg-[#060714]/90"
+            className="px-4 sm:px-8 py-4 border-b border-white/10 flex items-center justify-between bg-slate-950/95"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="text-white font-display font-bold text-sm sm:text-base">
@@ -245,7 +245,7 @@ export const PosterSection: React.FC<PosterSectionProps> = ({
                   src={posterDataUrl}
                   alt="Official Event Poster - National Level AI-FUSION 2026"
                   referrerPolicy="no-referrer"
-                  className="max-h-[82vh] w-auto rounded-xl border border-violet-400/40 shadow-2xl"
+                  className="max-h-[82vh] w-auto rounded-xl border border-slate-700 shadow-2xl"
                 />
               )}
             </div>

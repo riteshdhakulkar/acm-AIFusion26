@@ -161,7 +161,7 @@ export default function App() {
     <div
       className={`min-h-screen transition-colors duration-200 ${
         isDark
-          ? 'bg-[#060714] text-slate-100'
+          ? 'bg-[#0B0F19] text-slate-100'
           : 'bg-slate-50 text-slate-900'
       }`}
     >
@@ -246,7 +246,7 @@ export default function App() {
           <div
             className={`flex items-center gap-2 pl-3.5 pr-2 py-2 rounded-xl border shadow-xl backdrop-blur-md ${
               isDark
-                ? 'bg-[#0B0F26]/95 border-[#25D366]/50 text-white'
+                ? 'bg-slate-900/95 border-[#25D366]/50 text-white'
                 : 'bg-white/95 border-[#25D366]/60 text-slate-900'
             }`}
           >
@@ -279,7 +279,7 @@ export default function App() {
           rel="noopener noreferrer"
           title="Join Official WhatsApp Group"
           aria-label="Join Official AI-FUSION 2026 WhatsApp Group"
-          className="w-12 h-12 rounded-full bg-[#060714]/90 border border-[#25D366]/60 shadow-lg shadow-[#25D366]/25 flex items-center justify-center transition-transform duration-150 hover:scale-110 active:scale-95 shrink-0"
+          className="w-12 h-12 rounded-full bg-slate-900/90 border border-[#25D366]/60 shadow-lg shadow-[#25D366]/25 flex items-center justify-center transition-transform duration-150 hover:scale-110 active:scale-95 shrink-0"
         >
           <svg
             viewBox="0 0 24 24"

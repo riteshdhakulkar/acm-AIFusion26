@@ -22,7 +22,7 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
     <section
       className={`py-20 lg:py-28 border-t ${
         isDark
-          ? 'bg-[#080B20] border-violet-500/20'
+          ? 'bg-[#0B0F19] border-slate-800'
           : 'bg-white border-slate-200'
       }`}
     >
@@ -57,7 +57,7 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
             <div
               className={`p-6 rounded-2xl border space-y-3 ${
                 isDark
-                  ? 'bg-[#0C102B] border-violet-500/30'
+                  ? 'bg-[#0F172A] border-slate-800'
                   : 'bg-slate-50 border-slate-200'
               }`}
             >
@@ -74,7 +74,7 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
               </p>
               <div
                 className={`flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm font-mono font-semibold pt-1 ${
-                  isDark ? 'text-sky-300' : 'text-violet-800'
+                  isDark ? 'text-sky-300' : 'text-blue-700'
                 }`}
               >
                 {PERMITTED_TECH_STACKS.map((tech, i) => (
@@ -98,7 +98,7 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
                 key={req}
                 className={`p-5 rounded-2xl border flex items-start gap-3.5 ${
                   isDark
-                    ? 'bg-[#0C0F26] border-violet-500/25'
+                    ? 'bg-[#0F172A] border-slate-800'
                     : 'bg-slate-50 border-slate-200'
                 }`}
               >
@@ -126,8 +126,8 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
         <div
           className={`rounded-3xl border p-6 sm:p-10 lg:p-12 relative overflow-hidden ${
             isDark
-              ? 'bg-gradient-to-br from-[#120E36] via-[#0C0F28] to-[#080B1E] border-violet-400/40 shadow-2xl shadow-violet-950/40'
-              : 'bg-gradient-to-br from-violet-50 via-white to-sky-50 border-violet-300 shadow-lg'
+              ? 'bg-[#0F172A] border-slate-800 shadow-xl'
+              : 'bg-slate-50 border-slate-200 shadow-md'
           }`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -168,11 +168,11 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
                       key={useItem}
                       className={`px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold flex items-center gap-2 ${
                         isDark
-                          ? 'bg-[#080A1C]/80 border-white/10 text-slate-100'
+                          ? 'bg-slate-900 border-slate-800 text-slate-100'
                           : 'bg-white border-slate-200 text-slate-800'
                       }`}
                     >
-                      <Code2 className="w-3.5 h-3.5 text-violet-400 shrink-0" />
+                      <Code2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                       <span className="truncate">{useItem}</span>
                     </div>
                   ))}
@@ -205,11 +205,11 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
               <div
                 className={`p-6 rounded-2xl border space-y-4 ${
                   isDark
-                    ? 'bg-[#070919]/95 border-violet-500/30'
+                    ? 'bg-slate-950 border-slate-800'
                     : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                   <div className="flex items-center gap-2">
                     <TerminalSquare className="w-4 h-4 text-sky-400" />
                     <span
@@ -231,12 +231,12 @@ export const WhatToBuildAndAI: React.FC<WhatToBuildAndAIProps> = ({ isDark }) =>
                       key={tool}
                       className={`px-4 py-3 rounded-xl border flex items-center justify-between ${
                         isDark
-                          ? 'bg-[#0D1029] border-white/10 text-slate-100'
+                          ? 'bg-slate-900 border-slate-800 text-slate-100'
                           : 'bg-slate-50 border-slate-200 text-slate-900'
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-violet-400 font-bold">
+                        <span className="font-mono text-xs text-blue-400 font-bold">
                           0{idx + 1}
                         </span>
                         <span className="text-sm font-bold">{tool}</span>

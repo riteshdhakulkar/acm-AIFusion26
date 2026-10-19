@@ -425,17 +425,11 @@ export const ParticipantDashboardModal: React.FC<
                         : 'bg-slate-50 border-slate-300 text-slate-900'
                     }`}
                   >
-                    <option value="Track 01 (Event-Day Problem Statement)">
-                      Track 01 (Event-Day Reveal)
+                    <option value="Problem Statement 01 (Track 01)">
+                      Problem Statement 01 (Track 01)
                     </option>
-                    <option value="Track 02 (Event-Day Problem Statement)">
-                      Track 02 (Event-Day Reveal)
-                    </option>
-                    <option value="Track 03 (Event-Day Problem Statement)">
-                      Track 03 (Event-Day Reveal)
-                    </option>
-                    <option value="Track 04 (Event-Day Problem Statement)">
-                      Track 04 (Event-Day Reveal)
+                    <option value="Problem Statement 02 (Track 02)">
+                      Problem Statement 02 (Track 02)
                     </option>
                   </select>
                 </div>

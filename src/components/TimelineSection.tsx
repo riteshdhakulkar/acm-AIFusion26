@@ -11,7 +11,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ isDark }) => {
       id="timeline"
       className={`py-14 lg:py-20 border-t ${
         isDark
-          ? 'bg-[#060714] border-white/10'
+          ? 'bg-[#0B0F19] border-slate-800'
           : 'bg-slate-50 border-slate-200/80'
       }`}
     >
@@ -34,7 +34,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ isDark }) => {
           <div
             className={`inline-flex items-center gap-3 px-4 py-2 rounded-xl border text-xs font-mono ${
               isDark
-                ? 'bg-[#0C1029] border-violet-500/30 text-slate-300'
+                ? 'bg-[#0F172A] border-slate-800 text-slate-300'
                 : 'bg-white border-slate-200 text-slate-700'
             }`}
           >
@@ -62,11 +62,11 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ isDark }) => {
                 className={`p-4 sm:p-5 rounded-2xl border transition-all flex flex-col justify-between ${
                   isCodingSprint
                     ? isDark
-                      ? 'bg-gradient-to-br from-amber-500/15 via-[#101538] to-[#0C1029] border-amber-400/50'
+                      ? 'bg-[#0F172A] border-amber-500/40'
                       : 'bg-amber-50/70 border-amber-300'
                     : isDark
-                    ? 'bg-[#0C1029]/90 border-white/10 hover:border-violet-500/40'
-                    : 'bg-white border-slate-200 hover:border-violet-300'
+                    ? 'bg-[#0F172A] border-slate-800 hover:border-slate-700'
+                    : 'bg-white border-slate-200 hover:border-slate-300'
                 }`}
               >
                 <div>
@@ -76,8 +76,8 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ isDark }) => {
                         isCodingSprint
                           ? 'bg-amber-400 text-slate-950'
                           : isDark
-                          ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
-                          : 'bg-violet-100 text-violet-800'
+                          ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                          : 'bg-blue-50 text-blue-700'
                       }`}
                     >
                       {step.step}

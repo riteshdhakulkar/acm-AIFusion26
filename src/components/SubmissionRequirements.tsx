@@ -35,7 +35,7 @@ export const SubmissionRequirements: React.FC<SubmissionRequirementsProps> = ({
       id="submission"
       className={`py-14 lg:py-20 border-t ${
         isDark
-          ? 'bg-[#060714] border-white/10'
+          ? 'bg-[#0B0F19] border-slate-800'
           : 'bg-slate-50 border-slate-200/80'
       }`}
     >
@@ -58,7 +58,7 @@ export const SubmissionRequirements: React.FC<SubmissionRequirementsProps> = ({
           <div
             className={`px-3.5 py-2 rounded-xl border text-xs font-mono font-semibold ${
               isDark
-                ? 'bg-[#0C1029] border-white/10 text-emerald-400'
+                ? 'bg-[#0F172A] border-slate-800 text-emerald-400'
                 : 'bg-white border-slate-200 text-emerald-700'
             }`}
           >
@@ -89,11 +89,11 @@ export const SubmissionRequirements: React.FC<SubmissionRequirementsProps> = ({
                   } ${
                     isChecked
                       ? isDark
-                        ? 'bg-[#0F1538] border-emerald-500/40'
+                        ? 'bg-slate-900 border-emerald-500/40'
                         : 'bg-emerald-50/60 border-emerald-300'
                       : isDark
-                      ? 'bg-[#0C1029] border-white/10 hover:border-violet-500/40'
-                      : 'bg-white border-slate-200 hover:border-violet-300'
+                      ? 'bg-[#0F172A] border-slate-800 hover:border-slate-700'
+                      : 'bg-white border-slate-200 hover:border-slate-300'
                   }`}
                 >
                   <div className="flex items-start gap-3">
@@ -106,7 +106,7 @@ export const SubmissionRequirements: React.FC<SubmissionRequirementsProps> = ({
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-violet-500/20 text-violet-300">
+                        <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
                           #{item.number}
                         </span>
                         <h3
@@ -136,7 +136,7 @@ export const SubmissionRequirements: React.FC<SubmissionRequirementsProps> = ({
             <div
               className={`p-5 sm:p-6 rounded-2xl border-l-4 border-l-amber-400 border space-y-4 ${
                 isDark
-                  ? 'bg-[#0C1029] border-white/10'
+                  ? 'bg-[#0F172A] border-slate-800'
                   : 'bg-white border-slate-200 shadow-sm'
               }`}
             >
@@ -172,7 +172,7 @@ export const SubmissionRequirements: React.FC<SubmissionRequirementsProps> = ({
               <div
                 className={`p-3 rounded-xl border font-mono text-xs flex items-center justify-between gap-2 ${
                   isDark
-                    ? 'bg-[#07091A] border-white/10 text-amber-300'
+                    ? 'bg-slate-950 border-slate-800 text-amber-300'
                     : 'bg-slate-900 border-slate-800 text-amber-300'
                 }`}
               >

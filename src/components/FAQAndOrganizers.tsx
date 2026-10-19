@@ -371,7 +371,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                         isDark ? 'text-white' : 'text-slate-900'
                       }`}
                     >
-                      Computer Laboratory, IT Building
+                      CT Department (First Floor), Rajiv Gandhi IT Complex
                     </h4>
                   </div>
 
@@ -393,9 +393,9 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                         isDark ? 'text-slate-300' : 'text-slate-600'
                       }`}
                     >
-                      Department of Computer Technology, Priyadarshini College
-                      of Engineering, Hingna Road, Digdoh Hills, Nagpur,
-                      Maharashtra — 440019
+                      CT Department (First Floor), Rajiv Gandhi IT Complex,
+                      Priyadarshini College of Engineering, Hingna Road, Digdoh
+                      Hills, Nagpur, Maharashtra — 440019
                     </p>
                     <div className="pt-1 flex items-center gap-3">
                       <PceAcmLogo className="w-8 h-8" />
@@ -405,7 +405,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                           isDark ? 'text-slate-400' : 'text-slate-600'
                         }`}
                       >
-                        Offline Reporting: 08:45 AM · 22 Oct 2026
+                        Offline Reporting: 10:00 AM · Problem Statements: 11:00 AM · 22 Oct 2026
                       </span>
                     </div>
                   </div>
@@ -414,7 +414,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                     <div className="rounded-xl overflow-hidden border border-white/10 h-24 sm:h-28 relative">
                       <img
                         src={EVENT_CONFIG.GeneratedAssets.campusLab}
-                        alt="Computer Laboratory, IT Building at PCE Nagpur"
+                        alt="CT Department (First Floor), Rajiv Gandhi IT Complex at PCE Nagpur"
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover"
                         onError={(e) => {
@@ -425,7 +425,7 @@ export const FAQAndOrganizers: React.FC<FAQAndOrganizersProps> = ({
                       <div className="absolute inset-0 bg-gradient-to-t from-[#060714]/80 via-transparent to-transparent flex items-end p-2">
                         <span className="inline-flex items-center gap-1 text-[10px] font-mono text-white font-semibold">
                           <Building2 className="w-3 h-3 text-amber-400" />
-                          <span>IT Building · CT Dept</span>
+                          <span>Rajiv Gandhi IT Complex · 1st Floor</span>
                         </span>
                       </div>
                     </div>

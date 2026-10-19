@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ isDark }) => {
                 </strong>{' '}
                 ·{' '}
                 <span className="text-sky-400">PCE ACM Student Chapter</span> &amp;{' '}
-                <span className="text-violet-400">
+                <span className="text-sky-300">
                   PCE ACM-W Student Chapter
                 </span>
               </p>

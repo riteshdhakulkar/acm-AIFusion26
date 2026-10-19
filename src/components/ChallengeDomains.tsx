@@ -13,6 +13,7 @@ import {
   WHAT_TO_BUILD_REQUIREMENTS,
   PERMITTED_TECH_STACKS,
   AI_TOOL_EXAMPLES,
+  CHALLENGE_DOMAINS,
 } from '../data/eventData';
 
 interface ChallengeDomainsProps {
@@ -78,7 +79,7 @@ export const ChallengeDomains: React.FC<ChallengeDomainsProps> = ({
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}
               >
-                Problem Statements Will Be Displayed Live on the Event Day
+                2 Problem Statements Will Be Displayed Live on Event Day
               </h3>
 
               <p
@@ -87,16 +88,20 @@ export const ChallengeDomains: React.FC<ChallengeDomainsProps> = ({
                 }`}
               >
                 To ensure a fair and exciting 4-hour sprint for every team,
-                domains and problem statements are{' '}
+                problem statements are{' '}
                 <strong className="text-amber-400">
                   not disclosed in advance
                 </strong>
-                . Official problem statements will be displayed on-site on{' '}
+                . Exactly{' '}
+                <strong className="text-sky-400">
+                  2 official problem statements
+                </strong>{' '}
+                will be displayed on-site on{' '}
                 <strong className={isDark ? 'text-white' : 'text-slate-900'}>
                   22 October 2026
                 </strong>{' '}
-                during the morning briefing, and each team will choose{' '}
-                <strong className="text-sky-400">any ONE</strong> problem
+                during the morning briefing (11:00 AM), and each team will choose{' '}
+                <strong className="text-amber-400">any ONE</strong> problem
                 statement to build and deploy.
               </p>
             </div>
@@ -117,12 +122,101 @@ export const ChallengeDomains: React.FC<ChallengeDomainsProps> = ({
                   isDark ? 'text-slate-300' : 'text-slate-600'
                 }`}
               >
-                <li>• Multiple tracks revealed at 09:30 AM</li>
-                <li>• Select 1 problem statement with your team</li>
-                <li>• 4 Hours of hands-on AI-assisted coding</li>
+                <li>• Reporting time: 10:00 AM at CT Dept (1st Floor)</li>
+                <li>• Exactly 2 problem statements revealed at 11:00 AM</li>
+                <li>• Choose ANY 1 problem statement with your team</li>
+                <li>• 4 Hours of hands-on AI-assisted coding sprint</li>
                 <li>• Deploy live URL + push to GitHub</li>
               </ul>
             </div>
+          </div>
+        </div>
+
+        {/* 2 Problem Statements Cards Grid */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold">
+              // 2 OFFICIAL CHALLENGE TRACKS (PICK ANY 1)
+            </span>
+            <span
+              className={`text-xs font-mono ${
+                isDark ? 'text-slate-400' : 'text-slate-600'
+              }`}
+            >
+              Revealed Live on 22 October 2026
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {CHALLENGE_DOMAINS.map((domain) => (
+              <div
+                key={domain.id}
+                className={`p-6 rounded-2xl border transition-all flex flex-col justify-between relative overflow-hidden ${
+                  isDark
+                    ? 'bg-[#0C1029] border-white/10 hover:border-amber-400/50'
+                    : 'bg-slate-50 border-slate-200 hover:border-amber-400'
+                }`}
+              >
+                <div className="space-y-3.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-400/15 text-amber-300 border border-amber-400/30 flex items-center gap-1.5">
+                      <Lock className="w-3.5 h-3.5 text-amber-400" />
+                      <span>{domain.title}</span>
+                    </span>
+                    <span className="text-[11px] font-mono text-sky-400 font-semibold">
+                      Live Reveal @ 11:00 AM
+                    </span>
+                  </div>
+
+                  <h4
+                    className={`font-display text-base sm:text-lg font-bold ${
+                      isDark ? 'text-white' : 'text-slate-900'
+                    }`}
+                  >
+                    Track {domain.number} · Event-Day Challenge
+                  </h4>
+
+                  <p
+                    className={`text-xs sm:text-sm leading-relaxed ${
+                      isDark ? 'text-slate-300' : 'text-slate-600'
+                    }`}
+                  >
+                    {domain.shortDescription}
+                  </p>
+
+                  <div className="space-y-2 pt-3 border-t border-white/10">
+                    <div className="text-[11px] font-mono uppercase text-amber-400 font-bold">
+                      Key Deliverables
+                    </div>
+                    <ul
+                      className={`text-xs space-y-1.5 ${
+                        isDark ? 'text-slate-400' : 'text-slate-600'
+                      }`}
+                    >
+                      {domain.keyFocusAreas.map((focus, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{focus}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div
+                  className={`mt-4 pt-3 border-t text-[11px] font-mono flex items-center justify-between ${
+                    isDark
+                      ? 'border-white/10 text-slate-400'
+                      : 'border-slate-200 text-slate-600'
+                  }`}
+                >
+                  <span>Coding Duration: 4 Hours</span>
+                  <span className="text-emerald-400 font-semibold">
+                    Pick Either Track 01 or 02
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

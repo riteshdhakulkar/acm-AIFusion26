@@ -139,7 +139,7 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
                     key={pillar}
                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border ${
                       isDark
-                        ? 'bg-[#0E1330] border-violet-500/30 text-slate-200'
+                        ? 'bg-slate-900 border-slate-800 text-slate-200'
                         : 'bg-slate-50 border-slate-200 text-slate-800'
                     }`}
                   >
@@ -156,7 +156,7 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
             <div
               className={`p-5 sm:p-6 rounded-2xl border space-y-4 ${
                 isDark
-                  ? 'bg-[#0C1029] border-violet-500/30'
+                  ? 'bg-[#0F172A] border-slate-800'
                   : 'bg-slate-50 border-slate-200'
               }`}
             >
@@ -250,11 +250,11 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
                 <div
                   className={`p-3 rounded-xl border ${
                     isDark
-                      ? 'bg-[#070A1C] border-white/10'
+                      ? 'bg-slate-900 border-slate-800'
                       : 'bg-white border-slate-200'
                   }`}
                 >
-                  <ShieldCheck className="w-4 h-4 text-violet-400 mb-1" />
+                  <ShieldCheck className="w-4 h-4 text-sky-400 mb-1" />
                   <div
                     className={`font-bold ${
                       isDark ? 'text-white' : 'text-slate-900'
@@ -301,15 +301,15 @@ export const AboutAndStats: React.FC<AboutAndStatsProps> = ({ isDark }) => {
                 key={item.id}
                 className={`p-4 rounded-xl border transition-all ${
                   isDark
-                    ? 'bg-[#0C1029]/90 border-white/10 hover:border-violet-500/40'
-                    : 'bg-slate-50 border-slate-200 hover:border-violet-300'
+                    ? 'bg-[#0F172A] border-slate-800 hover:border-slate-700'
+                    : 'bg-slate-50 border-slate-200 hover:border-slate-300'
                 }`}
               >
                 <div className="flex items-center justify-between gap-1 mb-1.5">
                   <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-semibold">
                     {item.label}
                   </span>
-                  <Sparkles className="w-3 h-3 text-violet-400/70 shrink-0" />
+                  <Sparkles className="w-3 h-3 text-sky-400/70 shrink-0" />
                 </div>
                 <div
                   className={`font-display text-base sm:text-lg font-extrabold leading-snug ${
