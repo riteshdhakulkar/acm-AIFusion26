@@ -22,7 +22,7 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
       id="prizes"
       className={`py-14 lg:py-20 border-t ${
         isDark
-          ? 'bg-[#0B0F19] border-slate-800'
+          ? 'bg-[#060714] border-white/10'
           : 'bg-slate-50 border-slate-200/80'
       }`}
     >
@@ -46,7 +46,7 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
             <div
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border text-xs font-semibold ${
                 isDark
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                  ? 'bg-[#0C1029] border-emerald-500/30 text-emerald-300'
                   : 'bg-emerald-50 border-emerald-200 text-emerald-900'
               }`}
             >
@@ -64,10 +64,10 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
                   className={`p-5 sm:p-6 rounded-2xl border transition-all flex flex-col justify-between ${
                     isWinner
                       ? isDark
-                        ? 'bg-[#0F172A] border-amber-400/50 shadow-xl shadow-black/20'
+                        ? 'bg-gradient-to-b from-amber-500/15 via-[#0F1333] to-[#0C1029] border-amber-400/50 shadow-xl shadow-amber-950/20'
                         : 'bg-amber-50/80 border-amber-400 shadow-md'
                       : isDark
-                      ? 'bg-[#0F172A] border-slate-800'
+                      ? 'bg-[#0C1029] border-white/10'
                       : 'bg-white border-slate-200'
                   }`}
                 >
@@ -78,8 +78,8 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
                           isWinner
                             ? 'bg-amber-400 text-slate-950'
                             : isDark
-                            ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                            : 'bg-blue-50 text-blue-700'
+                            ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
+                            : 'bg-violet-100 text-violet-800'
                         }`}
                       >
                         {prize.badge}
@@ -130,7 +130,7 @@ export const PrizesAndWhy: React.FC<PrizesAndWhyProps> = ({ isDark }) => {
           id="sponsorship"
           className={`p-5 sm:p-6 rounded-2xl border-l-4 border-l-emerald-400 border ${
             isDark
-              ? 'bg-[#0F172A] border-slate-800'
+              ? 'bg-[#0C1029] border-white/10'
               : 'bg-white border-slate-200 shadow-sm'
           }`}
         >

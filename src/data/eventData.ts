@@ -82,10 +82,10 @@ export const EVENT_CONFIG = {
   department: 'Department of Computer Technology',
   chapters: ['PCE ACM Student Chapter', 'PCE ACM-W Student Chapter'],
   eventDate: '22 October 2026',
-  eventDateISO: '2026-10-22T10:00:00+05:30',
+  eventDateISO: '2026-10-22T09:00:00+05:30',
   registrationDeadline: '20 October 2026',
-  venue: 'CT Department (First Floor), Rajiv Gandhi IT Complex, Priyadarshini College of Engineering, Hingna Road, Digdoh Hills, Nagpur',
-  shortVenue: 'CT Department (First Floor), Rajiv Gandhi IT Complex, PCE',
+  venue: 'Computer Laboratory, IT Building, Computer Technology Department, Priyadarshini College of Engineering, Nagpur',
+  shortVenue: 'Computer Laboratory, IT Building · CT Department, PCE',
   format: 'Offline / On-site Event',
   totalDurationHours: 6,
   codingDurationHours: 4,
@@ -131,8 +131,8 @@ export const EVENT_AT_A_GLANCE = [
   {
     id: 'venue',
     label: 'VENUE',
-    value: 'CT Dept (1st Floor)',
-    detail: 'Rajiv Gandhi IT Complex, PCE',
+    value: 'Computer Laboratory, IT Building',
+    detail: 'CT Department, PCE Nagpur',
   },
   {
     id: 'total-event',
@@ -193,16 +193,16 @@ export const EVENT_AT_A_GLANCE = [
   },
 ];
 
-// Modular Challenge Tracks — Exactly 2 Problem Statements revealed live on Event Day
+// Modular Challenge Tracks — Problem statements will be displayed on the event day (no domains revealed right now)
 export const CHALLENGE_DOMAINS: ChallengeDomain[] = [
   {
     id: 'track-01',
     number: '01',
-    title: 'PROBLEM STATEMENT 01',
+    title: 'CHALLENGE TRACK 01',
     shortDescription:
-      'Confidential Problem Statement 01 — Revealed live at the venue on Event Day (22 October 2026).',
+      'Confidential Problem Statement — Will be displayed live at the venue on Event Day (22 October 2026).',
     problemStatement:
-      'Problem Statement 01 will be displayed on the event day during the on-site briefing at 11:00 AM. Teams can review both problem statements and select their preferred one to build.',
+      'Problem statements will be displayed on the event day during the on-site orientation session. Teams will be able to review all tracks and select their preferred problem statement on the spot.',
     keyFocusAreas: [
       'Real-world problem statement revealed on 22 October 2026',
       'Full-stack or interactive frontend web application',
@@ -221,11 +221,11 @@ export const CHALLENGE_DOMAINS: ChallengeDomain[] = [
   {
     id: 'track-02',
     number: '02',
-    title: 'PROBLEM STATEMENT 02',
+    title: 'CHALLENGE TRACK 02',
     shortDescription:
-      'Confidential Problem Statement 02 — Revealed live at the venue on Event Day (22 October 2026).',
+      'Confidential Problem Statement — Will be displayed live at the venue on Event Day (22 October 2026).',
     problemStatement:
-      'Problem Statement 02 will be displayed on the event day during the on-site briefing at 11:00 AM. Teams can review both problem statements and select their preferred one to build.',
+      'Problem statements will be displayed on the event day during the on-site orientation session. Teams will be able to review all tracks and select their preferred problem statement on the spot.',
     keyFocusAreas: [
       'Real-world problem statement revealed on 22 October 2026',
       'Practical solution design & user-centric experience',
@@ -241,6 +241,52 @@ export const CHALLENGE_DOMAINS: ChallengeDomain[] = [
       'A functional, deployed AI-powered website or web application solving the revealed problem statement within the 4-hour coding window.',
     accentColor: 'cyan',
   },
+  {
+    id: 'track-03',
+    number: '03',
+    title: 'CHALLENGE TRACK 03',
+    shortDescription:
+      'Confidential Problem Statement — Will be displayed live at the venue on Event Day (22 October 2026).',
+    problemStatement:
+      'Problem statements will be displayed on the event day during the on-site orientation session. Teams will be able to review all tracks and select their preferred problem statement on the spot.',
+    keyFocusAreas: [
+      'Real-world problem statement revealed on 22 October 2026',
+      'Innovative feature execution & clean architecture',
+      'High-contrast, responsive interface across devices',
+      'Complete GitHub repository with ACM collaborator access',
+    ],
+    suggestedAiCapabilities: [
+      'Rapid prototyping with Google AI Studio, Gemini, ChatGPT, or Cursor',
+      'Smart data processing and interactive UI components',
+      'End-to-end deployment readiness within 4 hours',
+    ],
+    deliverableExample:
+      'A functional, deployed AI-powered website or web application solving the revealed problem statement within the 4-hour coding window.',
+    accentColor: 'amber',
+  },
+  {
+    id: 'track-04',
+    number: '04',
+    title: 'CHALLENGE TRACK 04',
+    shortDescription:
+      'Confidential Problem Statement — Will be displayed live at the venue on Event Day (22 October 2026).',
+    problemStatement:
+      'Problem statements will be displayed on the event day during the on-site orientation session. Teams will be able to review all tracks and select their preferred problem statement on the spot.',
+    keyFocusAreas: [
+      'Real-world problem statement revealed on 22 October 2026',
+      'End-to-end functional web application',
+      'Intuitive UI/UX & seamless live demonstration',
+      'Deployed live link ready for Pre-Judging & Final Pitch',
+    ],
+    suggestedAiCapabilities: [
+      'AI-assisted research, UI generation & code implementation',
+      'Intelligent user flows addressing the event-day challenge',
+      'Structured 4–5 minute live demo + 2 minute Q&A',
+    ],
+    deliverableExample:
+      'A functional, deployed AI-powered website or web application solving the revealed problem statement within the 4-hour coding window.',
+    accentColor: 'blue',
+  },
 ];
 
 export const TIMELINE_STEPS: TimelineStep[] = [
@@ -254,15 +300,15 @@ export const TIMELINE_STEPS: TimelineStep[] = [
   {
     step: 'STEP 02',
     title: 'Check-In & Briefing',
-    subtitle: '10:00 AM Reporting',
-    description: 'Report to CT Dept (1st Floor), Rajiv Gandhi IT Complex, PCE for ID check & rules.',
+    subtitle: '09:00 AM Reporting',
+    description: 'Report to Computer Lab, IT Building, PCE for ID check & rules.',
     badge: 'Morning',
   },
   {
     step: 'STEP 03',
     title: 'Problem Statements',
-    subtitle: '11:00 AM Live Reveal',
-    description: '2 problem statements revealed on-site at 11:00 AM; pick ANY ONE.',
+    subtitle: 'Live Event-Day Reveal',
+    description: '4 problem statements revealed on-site; pick ANY ONE.',
     badge: 'Live Reveal',
   },
   {

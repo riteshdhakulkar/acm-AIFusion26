@@ -149,7 +149,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
           <div
             className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-mono ${
               isDark
-                ? 'bg-[#0F172A] border-slate-800 text-amber-300'
+                ? 'bg-[#0C1029] border-amber-400/30 text-amber-300'
                 : 'bg-amber-50 border-amber-200 text-amber-900'
             }`}
           >
@@ -164,7 +164,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
           <div
             className={`lg:col-span-7 p-6 sm:p-8 rounded-2xl border space-y-6 ${
               isDark
-                ? 'bg-[#0F172A] border-slate-800'
+                ? 'bg-gradient-to-br from-[#10163B] via-[#0C1029] to-[#080B1D] border-violet-500/35'
                 : 'bg-slate-50 border-slate-200 shadow-sm'
             }`}
           >
@@ -289,7 +289,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
           <div
             className={`lg:col-span-5 p-5 sm:p-6 rounded-2xl border space-y-4 ${
               isDark
-                ? 'bg-[#0F172A] border-slate-800'
+                ? 'bg-[#0C1029] border-white/10'
                 : 'bg-slate-50 border-slate-200'
             }`}
           >
@@ -329,7 +329,7 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                         teamSize === size
                           ? 'bg-amber-400 text-slate-950 border-amber-400'
                           : isDark
-                          ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
+                          ? 'bg-[#07091A] border-white/10 text-slate-300 hover:bg-white/5'
                           : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
@@ -356,8 +356,8 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                     placeholder="e.g., Neural Ninjas"
                     className={`w-full px-3 py-2 rounded-xl border text-xs focus:outline-none ${
                       isDark
-                        ? 'bg-slate-900 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-400'
-                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-blue-600'
+                        ? 'bg-[#07091A] border-white/15 text-white placeholder:text-slate-500 focus:border-amber-400'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-violet-600'
                     }`}
                   />
                 </div>
@@ -378,8 +378,8 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                     placeholder="Your full name"
                     className={`w-full px-3 py-2 rounded-xl border text-xs focus:outline-none ${
                       isDark
-                        ? 'bg-slate-900 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-400'
-                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-blue-600'
+                        ? 'bg-[#07091A] border-white/15 text-white placeholder:text-slate-500 focus:border-amber-400'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-violet-600'
                     }`}
                   />
                 </div>
@@ -402,8 +402,8 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                     placeholder="+91 98765 43210"
                     className={`w-full px-3 py-2 rounded-xl border text-xs focus:outline-none ${
                       isDark
-                        ? 'bg-slate-900 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-400'
-                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-blue-600'
+                        ? 'bg-[#07091A] border-white/15 text-white placeholder:text-slate-500 focus:border-amber-400'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-violet-600'
                     }`}
                   />
                 </div>
@@ -423,8 +423,8 @@ export const RegistrationAndUpdates: React.FC<RegistrationAndUpdatesProps> = ({
                     placeholder="College Name"
                     className={`w-full px-3 py-2 rounded-xl border text-xs focus:outline-none ${
                       isDark
-                        ? 'bg-slate-900 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-400'
-                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-blue-600'
+                        ? 'bg-[#07091A] border-white/15 text-white placeholder:text-slate-500 focus:border-amber-400'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-violet-600'
                     }`}
                   />
                 </div>

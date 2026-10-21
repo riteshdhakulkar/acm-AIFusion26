@@ -50,7 +50,7 @@ export const JudgingAndPresentation: React.FC<JudgingAndPresentationProps> = ({
           <div
             className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-mono font-bold ${
               isDark
-                ? 'bg-[#0F172A] border-slate-800 text-amber-300'
+                ? 'bg-[#0C1029] border-amber-400/30 text-amber-300'
                 : 'bg-amber-50 border-amber-200 text-amber-900'
             }`}
           >
@@ -65,21 +65,21 @@ export const JudgingAndPresentation: React.FC<JudgingAndPresentationProps> = ({
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {JUDGING_CRITERIA.map((criterion, index) => {
               const barColors = [
-                'bg-amber-400',
-                'bg-blue-500',
-                'bg-sky-400',
-                'bg-emerald-400',
-                'bg-blue-600',
-                'bg-teal-400',
+                'from-amber-400 to-amber-500',
+                'from-sky-400 to-sky-500',
+                'from-violet-400 to-violet-500',
+                'from-emerald-400 to-emerald-500',
+                'from-amber-400 to-sky-400',
+                'from-sky-400 to-violet-400',
               ];
-              const barColor = barColors[index % barColors.length];
+              const barGradient = barColors[index % barColors.length];
 
               return (
                 <div
                   key={criterion.id}
                   className={`p-4 rounded-2xl border flex flex-col justify-between ${
                     isDark
-                      ? 'bg-[#0F172A] border-slate-800'
+                      ? 'bg-[#0C1029] border-white/10'
                       : 'bg-slate-50 border-slate-200'
                   }`}
                 >
@@ -99,11 +99,11 @@ export const JudgingAndPresentation: React.FC<JudgingAndPresentationProps> = ({
 
                     <div
                       className={`w-full h-2 rounded-full overflow-hidden mb-2.5 ${
-                        isDark ? 'bg-slate-900' : 'bg-slate-200'
+                        isDark ? 'bg-[#070919]' : 'bg-slate-200'
                       }`}
                     >
                       <div
-                        className={`h-full rounded-full ${barColor}`}
+                        className={`h-full rounded-full bg-gradient-to-r ${barGradient}`}
                         style={{ width: `${criterion.percentage * 3.5}%` }}
                       />
                     </div>
@@ -126,7 +126,7 @@ export const JudgingAndPresentation: React.FC<JudgingAndPresentationProps> = ({
             <div
               className={`p-5 sm:p-6 rounded-2xl border space-y-5 ${
                 isDark
-                  ? 'bg-[#0F172A] border-slate-800'
+                  ? 'bg-[#0C1029] border-violet-500/30'
                   : 'bg-slate-50 border-slate-200'
               }`}
             >

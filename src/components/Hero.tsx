@@ -229,11 +229,11 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-sky-400 shrink-0" />
-                <span>CT Dept (First Floor), Rajiv Gandhi IT Complex, PCE Nagpur</span>
+                <span>Computer Lab, IT Building, PCE Nagpur</span>
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-violet-400 shrink-0" />
-                <span>Reporting: 10:00 AM · Problem Reveal: 11:00 AM</span>
+                <span>6 Hours Total (4 Hrs Coding + 2 Hrs Judging)</span>
               </span>
             </div>
           </div>
@@ -253,14 +253,14 @@ export const Hero: React.FC<HeroProps> = ({ isDark }) => {
                   <span className="text-[11px] font-mono uppercase tracking-widest text-amber-400 block font-semibold">
                     {timeLeft.isLive
                       ? '// COMPETITION LIVE NOW'
-                      : '// COUNTDOWN TO REPORTING'}
+                      : '// COUNTDOWN TO KICKOFF'}
                   </span>
                   <h2
                     className={`font-display text-sm sm:text-base font-bold mt-0.5 ${
                       isDark ? 'text-white' : 'text-slate-900'
                     }`}
                   >
-                    22 October 2026 · 10:00 AM IST
+                    22 October 2026 · 09:00 AM IST
                   </h2>
                 </div>
                 <a
